@@ -1,0 +1,23 @@
+snippet ONCE "Insert yml content for Jekyll markdowns" b
+---
+layout: post
+title: "${1:Title}"
+description: "${2:Description}"
+tags: [${3:Tags, separate by commas}]
+modified: ${4:date: today} 
+image:
+  feature: ${5:abstract-7.jpg}
+  credit: ${6:dargadgetz}
+  creditlink: ${7:http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/}
+  ${7:background: }
+---
+
+${0: Begin main content}
+endsnippet
+
+
+snippet CODE "Insert code snippet" b
+{% highlight ${1:c++} %}
+${0:Code Here}
+{% endhighlight %}
+endsnippet

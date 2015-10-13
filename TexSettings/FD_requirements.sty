@@ -1,0 +1,62 @@
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{	decorations.pathreplacing,
+				decorations.markings,
+				decorations.pathmorphing,
+				snakes}
+\usetikzlibrary{arrows.meta}
+
+
+\tikzset{photon/.style={decorate, decoration=snake}}
+\tikzset{electron/.style={
+		decoration={
+  			markings,
+  			mark=at position 0.5 with {\arrow{latex}}
+  		},postaction={decorate}}
+}
+\tikzset{hadron/.style={
+		thick,
+		decoration={
+  			markings,
+  			mark=at position 0.5 with {\arrow{>}}
+  		},
+  		postaction={decorate}
+  	}
+}
+\tikzset{boson/.style={
+   draw=black,
+	dashed,
+	decoration={
+		markings, 
+		mark= at position 0.5 with {\arrow{stealth}},
+	},
+	postaction={decorate}
+}}
+\tikzset{gluon/.style={
+	decorate, draw=black,
+    decoration={coil,amplitude=4pt, segment length=5pt}}
+}
+
+\tikzset{top/.style={
+		draw=red,
+      thick,
+		decoration={
+  			markings,
+  			mark=at position 0.5 with {\arrow{>}}
+  		},
+  		postaction={decorate}
+  	}
+}
+
+\tikzset{bottom/.style={
+		draw=blue,
+      thick,
+		decoration={
+  			markings,
+  			mark=at position 0.5 with {\arrow{>}}
+  		},
+  		postaction={decorate}
+  	}
+}
+\tikzset{vboson/.style={decorate, decoration=snake,draw=black}}
+

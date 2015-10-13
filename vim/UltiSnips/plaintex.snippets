@@ -1,0 +1,87 @@
+######################################################################
+## Latex template insertions  ########################################
+######################################################################
+
+priority -50
+
+extends tex
+extends texmath
+
+snippet HOMEWORK  "Single colum homework template" b 
+\documentclass[12pt, a4paper]{scrartcl}
+\usepackage[SingleColumn]
+\usepackage[mathHashing]
+\usepackage[codeStyle]
+
+\title{${1:Title}}
+\author{Enoch Chen, r04222015, Department of Physics}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+${0:Begin content}
+
+\end{document}
+endsnippet 
+
+
+snippet REPORT "Single column Report" b
+\input{~/.TexSettings/SingleColumn.tex}
+\input{~/.TexSettings/Math_hashing.tex}
+\input{~/.TexSettings/Code_style.tex}
+
+\title{${1:Title}}
+\author{Enoch Chen}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage 
+\tableofcontent
+\newpage
+
+${0:Begin content}
+
+\end{document}
+endsnippet
+
+snippet SLIDES_CMS "CMS weekly meeting slides" b
+\documentclass[10pt]{beamer}
+\usepackage{slideHashing}
+\usetheme{CMSSlides}
+
+\title[${1:Short Title}]{${2:$1 Long title}}
+\author[Enoch Chen (NTU)]{Enoch Chen}
+\institute[NTU CMS Weekly meeting]{National Taiwan University}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\end{document}
+endsnippet
+
+
+snippet CHINESE "Chinese latex file" b
+\input{~/.TexSettings/Chinese_Header.tex}
+\title{${1:標題}}
+\author{陳以牧\\B00202038 物理四}
+\date{\today}
+
+\begin{document}
+\maketitle 
+
+
+${0:正文開始}
+\end{document}
+endsnippet
+
+
+

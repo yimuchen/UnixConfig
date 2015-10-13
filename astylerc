@@ -1,0 +1,15 @@
+--style=linux
+--indent=spaces=3
+--convert-tabs
+--attach-classes
+--attach-inlines
+--min-conditional-indent=0
+--indent-col1-comments
+--pad-paren-in 
+--pad-oper
+--add-one-line-brackets
+--align-pointer=type
+--align-reference=type 
+--keep-one-line-blocks
+--break-after-logical
+--close-templates

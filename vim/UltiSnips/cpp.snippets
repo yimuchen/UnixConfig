@@ -1,0 +1,54 @@
+snippet SEP_COMMENT "Seperator comment"
+`!p snip.rv = '//-----'` ${1:Seperator name} `!p snip.rv = ' ' + '-'*(70-len(t[1]))`
+endsnippet
+
+snippet SECTION_COMMENT "code section comment" 
+//------------------------------------------------------------------------------ 
+//   ${1:Section comment}
+//------------------------------------------------------------------------------
+endsnippet
+
+snippet BLOCK_COMMENT "Block comment in body" b 
+/*******************************************************************************
+ *
+ *  Note : $1
+ *
+*******************************************************************************/
+$0
+endsnippet 
+
+snippet HEAD_COMMENT "Block comment at file header" b 
+/*******************************************************************************
+ *
+ *  Filename    : ${1:`!p snip.rv = snip.fn`}
+ *  Description : ${2:One line description of file}
+ *  Author      : ${3:Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]}
+ *  
+ *  ${4:Details     :}
+ *
+*******************************************************************************/
+$0
+endsnippet 
+
+snippet once "once guard for headers" b
+#ifndef ${1:`!p
+import string
+name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+snip.rv=('__%s__'% name ).upper()		
+`}
+#define $1
+
+$0
+
+#endif // $1
+endsnippet
+
+snippet main "Quick insert for main function" b
+int main( int argc, char* argv[] ) 
+{
+	$0
+	return 0;
+}
+endsnippet
+
+

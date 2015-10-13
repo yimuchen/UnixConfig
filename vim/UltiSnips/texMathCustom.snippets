@@ -1,0 +1,64 @@
+################################################
+## Custom latex math snippets 
+################################################ 
+
+snippet \eqna "equation array" b
+\begin{eqnarray}
+	${0:Insert equation Here}
+\label{eqn:${1:Equation label}}
+\end{eqnarray}
+endsnippet
+
+## Brackets short hand ################################
+snippet \enc "Round brackets"
+\enc{
+	${0}
+}
+endsnippet
+
+snippet \encsq "Square brackets" 
+\encsq{
+	${0}
+}
+endsnippet
+
+snippet \encbr "Brace brackets" 
+\encbr{
+	${0}
+}
+endsnippet
+
+snippet \mean "Mean / angular brackets" 
+\mean{${0}}
+endsnippet
+
+## Dirac bracket notations #############
+snippet \bra  "Dirac bra"
+\bra{${0}}
+endsnippet
+
+snippet \ket "Dirac ket" 
+\ket{${0}}
+endsnippet
+
+snippet \braket "Dirac braket" 
+\braket{${1}}{${2}}
+endsnippet
+
+snippet \Obraket "Dirac braket with operator" 
+\Obraket{${1}}{${0:operator}}{${2}}
+endsnippet
+
+## Differntial operators ########################
+snippet \pd "partial differentiation"
+\pd{${1}}{${2}}
+endsnippet
+
+snippet \pdd "Second order partial differentialtion"
+\pdd{${1}}{${2}}
+endsnippet
+
+snippet \pdc "Conditional particle differential" 
+\pdc{${1}}{${2}}{${3:Condition}}
+endsnippet
+

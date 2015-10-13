@@ -1,0 +1,53 @@
+
+\usepackage{amsmath}
+\usepackage{slashed}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+%% Font settings 
+%\setmathfont{Latin Modern Math}
+%\setmathfont[range=\mathit/{latin,Latin,num,Greek,greek}]{Linux Libertine O Italic}
+%\setmathfont[range=\mathup/{latin,Latin,num,Greek,greek}]{Linux Libertine O}
+%\setmathfont[range=\mathbfup/{latin,Latin,num,Greek,greek}]{Linux Libertine O Bold}
+%\setmathfont[range={"2202}]{Linux Libertine O}% "02202 = \partial % doesn't work
+%\setmathfont[range={"221E}]{Linux Libertine O}% "0221E = \infty
+
+% Defining braces
+\newcommand{\enc}[1]{\ensuremath{\left( #1 \right)}}
+\newcommand{\encsq}[1]{\ensuremath{\left[ #1 \right] }}
+\newcommand{\encbr}[1]{\ensuremath{\left\lbrace #1 \right\rbrace }}
+\newcommand{\mean}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+%% Differential operators
+\newcommand{\diff}[2]{ \frac{d #1}{d #2} }
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} 
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}} 
+\newcommand{\pdc}[3]{ \left( \frac{\partial #1}{\partial #2} \right)_{#3}}
+\newcommand{\div}{\ensuremath{\vec{\nabla}\cdot}}
+\newcommand{\grad}{\ensuremath{\vec{\nabla}}}
+\newcommand{\curl}{\ensuremath{ \nabla \times}}
+\newcommand{\lap}{\ensuremath{\nabla^2 }}
+\def\dbar{{\mathchar'26\mkern-12mu d}}
+
+%defining commutation relation
+\newcommand{\com}[2]{\ensuremath{\left[ \, #1 \, , \, #2 \right]}}
+\newcommand{\anticom}[2]{\ensuremath{\left\lbrace \, #1 \, , \, #2 \right\rbrace}}
+
+%%Defining Dirac Notation shorthand
+\newcommand{\bra}[1]{\ensuremath{\left\langle #1 \right|}}
+\newcommand{\ket}[1]{\ensuremath{\left| #1 \right\rangle }}
+\newcommand{\braket}[2]{\ensuremath{\left< #1 \vphantom{#2} \right| \left. #2 \vphantom{#1} \right>}}
+\newcommand{\Obraket}[3]{\ensuremath{ \left< #1 \vphantom{#2} \vphantom{#3} \right| #2 \left| \vphantom{#1} \vphantom{#2} #3 \right>}}
+
+%% contraction notation 
+\newcommand{\con}[2]{\ensuremath{\left< #1 \,,\, #2 \right>}}
+
+%% Functions 
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\sinc}{\ensuremath{\text{sinc}}}
+\newcommand{\set}[1]{\ensuremath{\left\lbrace #1 \right\rbrace}}
+\newcommand{\cond}[2]{\ensuremath{\left. \left( #1 \right) \right|_{#2} }}
+
+%%Order of 10
+\newcommand{\ODR}[1]{\ensuremath{\times 10^{#1}}}
+

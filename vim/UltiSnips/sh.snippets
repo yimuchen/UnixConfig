@@ -1,0 +1,42 @@
+snippet BLOCK_COMMENT "Block comments for headers" b
+##**************************************************************************************************
+##
+##  ${1:Begin Block}
+##
+##**************************************************************************************************
+$0
+endsnippet
+
+snippet SECTION_COMMENT "Section comment" b
+#--------------------------------------------------------------------------------  
+#  ${0:Section Name}
+#--------------------------------------------------------------------------------  
+endsnippet
+
+snippet SEP_COMMENT "Seperator Comment" b
+`!p snip.rv = '#----- '` ${1:Seperator name} `!p snip.rv = ' ' + '-'*(90-len(t[1])) `
+endsnippet
+
+snippet ECHO_SEP "Seperator echo output" b
+`!p snip.rv = 'echo \"' + '-'*((80-len(t[1])-1)/2) + ' '` ${1:Seperator name} `!p snip.rv = ' ' + '-'*((80-len(t[1]))/2) + '\"' `
+endsnippet
+
+
+snippet HEAD "Inserting file discription comment" b
+#-------------------------------------------------------------------------------
+#
+#   File        : `!p snip.rv=snip.fn`
+#   Descriptions: ${1: Breif description of file}
+#   Usage       : ./`!p snip.rv=snip.fn` ${2:Option}
+#
+#-------------------------------------------------------------------------------
+endsnippet
+
+
+snippet FUNCTION "Adding standard function comment in front of function" b
+# ${1:Function name} \$${2:Number of arguments}
+# ${3:Description:}
+$1(){
+	$0
+}
+endsnippet

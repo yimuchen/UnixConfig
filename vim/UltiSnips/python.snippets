@@ -1,0 +1,19 @@
+snippet HEAD_COMMENT "Head comment" b
+##**************************************************************************************************
+##
+##    FileName   :  `!p snip.rv=snip.fn`
+##    Description:  ${2}
+##    Usage      :
+##
+##**************************************************************************************************
+endsnippet
+
+snippet SECTION_COMMENT "Section comment" 
+#------------------------------------------------------------------------------- 
+#   ${1:Begin Comment}
+#------------------------------------------------------------------------------- 
+endsnippet
+
+snippet SEP_COMMENT "Seperator comment"
+`!p snip.rv = '#-----'` ${1:Seperator name} `!p snip.rv = '-'*(93-len(t[1])) `
+endsnippet
