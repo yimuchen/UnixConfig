@@ -1,11 +1,3 @@
-snippet BLOCK_COMMENT "Block comments for headers" b
-##**************************************************************************************************
-##
-##  ${1:Begin Block}
-##
-##**************************************************************************************************
-$0
-endsnippet
 
 snippet SECTION_COMMENT "Section comment" b
 #--------------------------------------------------------------------------------  
@@ -14,7 +6,7 @@ snippet SECTION_COMMENT "Section comment" b
 endsnippet
 
 snippet SEP_COMMENT "Seperator Comment" b
-`!p snip.rv = '#----- '` ${1:Seperator name} `!p snip.rv = ' ' + '-'*(90-len(t[1])) `
+`!p snip.rv = '#----- '` ${1:Seperator name} `!p snip.rv = ' ' + '-'*(70-len(t[1])) `
 endsnippet
 
 snippet ECHO_SEP "Seperator echo output" b
@@ -26,10 +18,11 @@ snippet HEAD "Inserting file discription comment" b
 #-------------------------------------------------------------------------------
 #
 #   File        : `!p snip.rv=snip.fn`
-#   Descriptions: ${1: Breif description of file}
+#   Descriptions: ${1:Breif description of file}
 #   Usage       : ./`!p snip.rv=snip.fn` ${2:Option}
 #
 #-------------------------------------------------------------------------------
+
 endsnippet
 
 

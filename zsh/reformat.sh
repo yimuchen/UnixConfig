@@ -13,6 +13,20 @@ for EXT in $TARGET_HEADER $TARGET_EXTENSION $OTHER_HEADERS $OTHER_EXTENSIONS ; d
    export ALL_CPP_FILES="*$EXT "$ALL_CPP_FILES
 done
 
+#--------------------------------------------------------------------------------  
+#  The highest functions 
+#--------------------------------------------------------------------------------  
+function reformat() {
+   if [[ `check-git` != "" ]] ; then 
+      echo "Error! Requires running in a git directory"
+      return -1
+   fi 
+
+   exec change-cpp-ext  
+   exec change-head-ext
+   exec fix-links
+   exec run-astyle 
+}
 
 #--------------------------------------------------------------------------------  
 #  Defining the helper functions 
@@ -122,18 +136,3 @@ function run-astyle() {
 }
 
 
-#--------------------------------------------------------------------------------  
-#  The highest functions 
-#--------------------------------------------------------------------------------  
-
-function reformat() {
-   if [[ `check-git` != "" ]] ; then 
-      echo "Error! Requires running in a git directory"
-      return -1
-   fi 
-
-   exec change-cpp-ext  
-   exec change-head-ext
-   exec fix-links
-   exec run-astyle 
-}
