@@ -45,9 +45,22 @@
 
 %% Functions 
 \newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
-\newcommand{\sinc}{\ensuremath{\text{sinc}}}
+\newcommand{\sinc}[1]{\ensuremath{\textnormal{sinc}\enc{#1}}}
 \newcommand{\set}[1]{\ensuremath{\left\lbrace #1 \right\rbrace}}
 \newcommand{\cond}[2]{\ensuremath{\left. \left( #1 \right) \right|_{#2} }}
+\newcommand{\Real}[1]{\ensuremath{\mathbb{Re}\encsq{#1}}}
+\newcommand{\atan}[1]{\ensuremath{\,\textnormal{tan}^{-1}\enc{#1}}}
+%%% Redefining command commands 
+\let\oldsin\sin
+\let\oldcos\cos
+\let\oldtan\tan
+\let\oldln\ln
+\renewcommand{\sin}[1]{\ensuremath{\,\textnormal{sin}\enc{#1}}}
+\renewcommand{\cos}[1]{\ensuremath{\,\textnormal{cos}\enc{#1}}}
+\renewcommand{\tan}[1]{\ensuremath{\,\textnormal{tan}\enc{#1}}}
+\renewcommand{\ln}[1]{\ensuremath{\,\textnormal{ln}\enc{#1}}}
+\newcommand{\pcos}[2]{\ensuremath{\,\textnormal{cos}^{#2}\enc{#1}}}
+
 
 %% New functions 
 \let\oldsin\sin
