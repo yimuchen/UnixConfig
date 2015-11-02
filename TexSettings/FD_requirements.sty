@@ -8,14 +8,44 @@
 
 
 \tikzset{photon/.style={decorate, decoration=snake}}
-\tikzset{electron/.style={
+\tikzset{lepton/.style={
 		decoration={
   			markings,
   			mark=at position 0.5 with {\arrow{latex}}
   		},postaction={decorate}}
 }
+\tikzset{neutino/.style={
+      dashed,
+		decoration={
+  			markings,
+  			mark=at position 0.5 with {\arrow{latex}}
+  		},postaction={decorate}}
+}
+   
+
+%%----- Hadron settings  -------------------------------------------------------
 \tikzset{hadron/.style={
 		thick,
+		decoration={
+  			markings,
+  			mark=at position 0.5 with {\arrow{>}}
+  		},
+  		postaction={decorate}
+  	}
+}
+\tikzset{bhadron/.style={
+		thick,
+      draw=blue,
+		decoration={
+  			markings,
+  			mark=at position 0.5 with {\arrow{>}}
+  		},
+  		postaction={decorate}
+  	}
+}
+\tikzset{lhadron/.style={
+		thick,
+      draw=green,
 		decoration={
   			markings,
   			mark=at position 0.5 with {\arrow{>}}
@@ -48,15 +78,5 @@
   	}
 }
 
-\tikzset{bottom/.style={
-		draw=blue,
-      thick,
-		decoration={
-  			markings,
-  			mark=at position 0.5 with {\arrow{>}}
-  		},
-  		postaction={decorate}
-  	}
-}
 \tikzset{vboson/.style={decorate, decoration=snake,draw=black}}
 

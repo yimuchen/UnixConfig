@@ -9,4 +9,4 @@
 
 #source ~/.custom-zsh/lxplus_rc.sh
 #source ~/.custom-zsh/ntugrid.sh 
-#source ~/.custom-zsh/personal_machine.sh
+source ~/.custom-zsh/personal_machine.sh

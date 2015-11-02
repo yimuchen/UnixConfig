@@ -51,4 +51,11 @@ int main( int argc, char* argv[] )
 }
 endsnippet
 
-
+snippet AddCMD "Add CMD for Ric' CMDParser Package" b
+//------------------------------------------------------------------------------ 
+//   ${1:Command name}
+//------------------------------------------------------------------------------
+CmdExecStatus $1::exec( const string& input ){ return CMD_EXEC_DONE; }
+void $1::usage( ostream& os ) const {} 
+void $1::help() const {}
+endsnippet
