@@ -24,7 +24,7 @@
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} 
 \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}} 
 \newcommand{\pdc}[3]{ \left( \frac{\partial #1}{\partial #2} \right)_{#3}}
-\newcommand{\div}{\ensuremath{\vec{\nabla}\cdot}}
+\newcommand{\dive}{\ensuremath{\vec{\nabla}\cdot}}
 \newcommand{\grad}{\ensuremath{\vec{\nabla}}}
 \newcommand{\curl}{\ensuremath{ \nabla \times}}
 \newcommand{\lap}{\ensuremath{\nabla^2 }}
@@ -50,17 +50,6 @@
 \newcommand{\cond}[2]{\ensuremath{\left. \left( #1 \right) \right|_{#2} }}
 \newcommand{\Real}[1]{\ensuremath{\mathbb{Re}\encsq{#1}}}
 \newcommand{\atan}[1]{\ensuremath{\,\textnormal{tan}^{-1}\enc{#1}}}
-%%% Redefining command commands 
-\let\oldsin\sin
-\let\oldcos\cos
-\let\oldtan\tan
-\let\oldln\ln
-\renewcommand{\sin}[1]{\ensuremath{\,\textnormal{sin}\enc{#1}}}
-\renewcommand{\cos}[1]{\ensuremath{\,\textnormal{cos}\enc{#1}}}
-\renewcommand{\tan}[1]{\ensuremath{\,\textnormal{tan}\enc{#1}}}
-\renewcommand{\ln}[1]{\ensuremath{\,\textnormal{ln}\enc{#1}}}
-\newcommand{\pcos}[2]{\ensuremath{\,\textnormal{cos}^{#2}\enc{#1}}}
-
 
 %% New functions 
 \let\oldsin\sin
@@ -71,9 +60,10 @@
 \renewcommand{\sin}[1]{\ensuremath{\textnormal{sin}\enc{#1}}}
 \renewcommand{\cos}[1]{\ensuremath{\textnormal{cos}\enc{#1}}}
 \renewcommand{\tan}[1]{\ensuremath{\textnormal{tan}\enc{#1}}}
-\newcommand{\atan}[1]{\ensuremath{\textnormal{tan}^{-1}\enc{#1}}}
-\newcommand{\Real}[1]{\ensuremath{\mathbb{Re}\encsq{#1}}}
 \newcommand{\pcos}[2]{\ensuremath{\textnormal{cos}^{#2}\enc{#1}}}
+\newcommand{\psin}[2]{\ensuremath{\textnormal{sin}^{#2}\enc{#1}}}
+
+
 %%Order of 10
 \newcommand{\ODR}[1]{\ensuremath{\times 10^{#1}}}
 
