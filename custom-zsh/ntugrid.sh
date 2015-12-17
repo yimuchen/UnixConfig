@@ -4,11 +4,14 @@
 #   Descriptions: NTUGrid specific 
 #
 #-------------------------------------------------------------------------------
+export WORKPATH="/wk_cms/yichen/"
 
 alias usecms='source /cvmfs/cms.cern.ch/cmsset_default.sh'
 alias wget='wget --no-check-certificate'
 
 unset SSH_ASKPASS
+
+export LD_LIBRARY_PATH=$HOME/local/lib/root/:$LD_LIBRARY_PATH
 
 source ~/.custom-zsh/xrd_ntugrid.sh
 source ~/.custom-zsh/cmssw.sh

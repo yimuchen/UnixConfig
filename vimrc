@@ -24,11 +24,9 @@ set number
 set relativenumber
 set numberwidth=4
 
-
 ""----  Fold settings  ---------------------------------------------------------
 set foldmethod=syntax      "  Enable folding
 set foldlevelstart=20      "  Effectively open all folds on file open
-
 
 ""----  Misc. Settings  --------------------------------------------------------
 set showcmd
@@ -37,9 +35,11 @@ set formatoptions=c,q,r,t
 set ruler
 set background=dark
 set mouse=a
-" set autochdir
-set spell spelllang=en_gb
 set shell=zsh\ --login
+
+""----  Spell check settings  --------------------------------------------------
+set spell spelllang=en_gb
+syntax spell toplevel
 
 
 ""----  Open on previous position  ---------------------------------------------
@@ -83,11 +83,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'Yggdroot/indentLine'
-Plugin 'mkitt/tabline.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-latex/vim-latex'
 Plugin 'drmingdrmer/vim-syntax-markdown'
 call vundle#end()
 filetype on 
