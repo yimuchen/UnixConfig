@@ -16,4 +16,16 @@ alias bpkdata='cmsRun bprimeKit_miniAOD_data.py maxEvts=100 Debug=100 2>&1 | tee
 alias fatalCheck='cat log.txt | grep -A 10 -B 10 Fatal'
 alias inrne4='ssh inrne4'
 
-unset SSH_ASKPASS ## Disabling gnome 
+unset SSH_ASKPASS ## Disabling gnome
+
+bcheck(){
+   echo "QUEUE   Total   Running   Pending"
+   for queue in "1nh 8nh 1nd 2nd 1nw 2nw" ; do
+      total=$(   bjobs | grep $queue | grep $USER | wc --lines )
+      running=$( bjobs | grep $queue | grep RUN   | wc --lines )
+      pending=$( bjobs | grep $queue | grep PEN D | wc --lines )
+      echo $queue $total $running $pending
+   done
+}
+
+
