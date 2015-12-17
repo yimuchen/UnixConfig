@@ -16,4 +16,10 @@ alias bpkdata='cmsRun bprimeKit_miniAOD_data.py maxEvts=100 Debug=100 2>&1 | tee
 alias fatalCheck='cat log.txt | grep -A 10 -B 10 Fatal'
 alias inrne4='ssh inrne4'
 
-unset SSH_ASKPASS ## Disabling gnome 
+unset SSH_ASKPASS ## Disabling gnome
+
+function get_lumical() 
+{
+   export PATH=$HOME/.local/bin:/afs/cern.ch/cms/lumi/brilconda-1.0.3/bin:$PATH
+   pip install --install-option="--prefix=$HOME/.local" brilws
+}
