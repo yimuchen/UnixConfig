@@ -2,6 +2,10 @@ snippet SEP_COMMENT "Seperator comment"
 `!p snip.rv = '//-----'` ${1:Seperator name} `!p snip.rv = ' ' + '-'*(70-len(t[1]))`
 endsnippet
 
+snippet NOTE_COMMENT "Seperator comment"
+`!p snip.rv = '/*****'` ${1:Seperator name} `!p snip.rv = ' ' + '*'*(70-len(t[1])) + '/'`
+endsnippet
+
 snippet SECTION_COMMENT "code section comment" 
 //------------------------------------------------------------------------------ 
 //   ${1:Section comment}
