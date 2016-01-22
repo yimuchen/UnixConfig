@@ -11,7 +11,7 @@ own_window_transparent no
 own_window_title conkyrc
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
-minimum_size 600 1080
+minimum_size 500 1080
 draw_shades no
 draw_outline no
 draw_borders no
@@ -29,7 +29,7 @@ color4 666666
 color4 444444
 color5 00AAFF
 text_buffer_size 100000
-top_name_width 5
+top_name_width 32
 update_interval 1
 
 lua_load ~/.Conky_config/gauges.lua
@@ -55,7 +55,7 @@ ${goto 260}${color1}${top name 1}${alignr}${top cpu 1}%
 ${goto 260}${color2}${top name 2}${alignr}${top cpu 2}%
 ${goto 260}${color3}${top name 3}${alignr}${top cpu 3}%
 ${goto 260}${color3}${top name 4}${alignr}${top cpu 4}%
-${goto 260}${color3}${top name 4}${alignr}${top cpu 4}%
+${goto 260}${color3}${top name 5}${alignr}${top cpu 5}%
 
 
 ${goto 250}${font Source Code Pro:size=15}${color}${memperc}%(${mem}) ${voffset -15}${alignr}${memgraph 30,150 0000AA AABBFF}
@@ -75,17 +75,17 @@ ${goto 260}${color3}${top_mem name 5}${alignr}${top_mem mem 5}%
 ${goto 250}${color}${font Source Code Pro:size=15}${diskio /dev/sda} ${alignr}${voffset -20}${diskiograph 30,150 0000AA AABBFF}
 ${voffset -90}
 ${goto 110}${font Source Han Sans:size=42:style=bold}${color}HDD${color5}${hr 2}${font Source Han Sans:size=11}
-
+${goto 110} 
 
 ${voffset -85}${font Source Han Sans:size=12}
-${goto 260}${color}/boot ${goto 400}${fs_used_perc /boot}% ${goto 480}${fs_used /boot}${goto 540}/${alignr}${fs_size /boot}
-${goto 260}${color}/     ${goto 400}${fs_used_perc /}% ${goto 480}${fs_used /}${goto 540}/${alignr}${fs_size /}
-${goto 260}${color}/var  ${goto 400}${fs_used_perc /var}% ${goto 480}${fs_used /var}${goto 540}/${alignr}${fs_size /var}
-${goto 260}${color}/home ${goto 400}${fs_used_perc /home}% ${goto 480}${fs_used /home}${goto 540}/${alignr}${fs_size /home}
+${goto 260}${color}/boot ${goto 390}(${fs_used_perc /boot}%) ${goto 440}${fs_used /boot}${goto 500}/${alignr}${fs_size /boot}
+${goto 260}${color}/     ${goto 390}(${fs_used_perc /}%) ${goto 440}${fs_used /}${goto 500}/${alignr}${fs_size /}
+${goto 260}${color}/var  ${goto 390}(${fs_used_perc /var}%) ${goto 440}${fs_used /var}${goto 500}/${alignr}${fs_size /var}
+${goto 260}${color}/home ${goto 390}(${fs_used_perc /home}%) ${goto 440}${fs_used /home}${goto 500}/${alignr}${fs_size /home}
 
 ${goto 110}${font Source Han Sans:size=42:style=bold}${color}NET${color5}${hr 2}${color}
-${voffset -82}${goto 470}${downspeedgraph enp4s0f1 30,150 0000AA AABBFF} ${goto 470}${downspeedgraph wlp3s0 30,150 0000FF AABBFF}
-${voffset -53}${goto 470}${upspeedgraph enp4s0f1 -30,150 000088 8899CC}  ${goto 470}${upspeedgraph wlp3s0 -30,150 000088 8899CC}${font Source Han Sans:size=11:style=normal}
+${voffset -82}${goto 470}${downspeedgraph enp4s0f1 30,100 0000AA AABBFF} ${goto 470}${downspeedgraph wlp3s0 30,100 0000FF AABBFF}
+${voffset -53}${goto 370}${upspeedgraph enp4s0f1 -30,150 000088 8899CC}  ${goto 370}${upspeedgraph wlp3s0 -30,150 000088 8899CC}${font Source Han Sans:size=11:style=normal}
 ${voffset -55}
 ${goto 110}${if_up wlp3s0}${wireless_essid wlp3s0} (${wireless_link_qual wlp3s0}/${wireless_link_qual_max wlp3s0})${endif}
 ${voffset -70}${goto 260}${font Source Code Pro:size=11}Download: ${goto 350}${downspeed enp4s0f1}${goto 370}+${downspeed wlp3s0}

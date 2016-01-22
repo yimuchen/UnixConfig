@@ -14,7 +14,7 @@ require 'cairo'
 gauge = {
 {
     name='time',                    arg='%I',                  max_value=12,
-    x=500,                          y=140,
+    x=440,                          y=140,
     graph_radius=100,
     graph_thickness=15,
     graph_start_angle=0,
@@ -35,7 +35,7 @@ gauge = {
 },
 {
     name='time',                    arg='%M',                  max_value=60,
-    x=500,                          y=140,
+    x=440,                          y=140,
     graph_radius=80,
     graph_thickness=15,
     graph_start_angle=0,
@@ -56,7 +56,7 @@ gauge = {
 },
 {
     name='time',                    arg='%S',                  max_value=60,
-    x=500,                          y=140,
+    x=440,                          y=140,
     graph_radius=20,
     graph_thickness=20,
     graph_start_angle=0,
@@ -77,7 +77,7 @@ gauge = {
 },
 {
     name='battery_percent',         arg='BAT0',                  max_value=100,
-    x=500,                          y=140,
+    x=440,                          y=140,
     graph_radius=65,
     graph_thickness=5,
     graph_start_angle=0,
@@ -203,7 +203,7 @@ gauge = {
 },
 {
     name='memperc',                arg='',                      max_value=100,
-    x=100,                          y=645,
+    x=100,                          y=635,
     graph_radius=60,
     graph_thickness=30,
     graph_start_angle=90,

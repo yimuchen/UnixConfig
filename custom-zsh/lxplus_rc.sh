@@ -27,5 +27,3 @@ bcheck(){
       echo $queue $total $running $pending
    done
 }
-
-
