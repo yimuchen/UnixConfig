@@ -5,8 +5,14 @@
 #
 #-------------------------------------------------------------------------------
 
-alias smake='scram b -j 8'
 alias crab-setup='source /cvmfs/cms.cern.ch/crab3/crab.sh'
+
+smake() {
+   num_core=$(cat /proc/cpuinfo | grep processor | wc --lines)
+   run_core=$((num_core/2))
+   echo "Running on $run_core(out of $num_core) threads.."
+   scram b -j $run_core 
+}
 
 my-cmsenv() {
    cmsenv 
