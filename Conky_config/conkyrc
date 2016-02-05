@@ -84,9 +84,9 @@ ${goto 260}${color}/var  ${goto 390}(${fs_used_perc /var}%) ${goto 440}${fs_used
 ${goto 260}${color}/home ${goto 390}(${fs_used_perc /home}%) ${goto 440}${fs_used /home}${goto 500}/${alignr}${fs_size /home}
 
 ${goto 110}${font Source Han Sans:size=42:style=bold}${color}NET${color5}${hr 2}${color}
-${voffset -82}${goto 470}${downspeedgraph enp4s0f1 30,100 0000AA AABBFF} ${goto 470}${downspeedgraph wlp3s0 30,100 0000FF AABBFF}
-${voffset -53}${goto 370}${upspeedgraph enp4s0f1 -30,150 000088 8899CC}  ${goto 370}${upspeedgraph wlp3s0 -30,150 000088 8899CC}${font Source Han Sans:size=11:style=normal}
-${voffset -55}
+${voffset -82}${goto 400}${downspeedgraph enp4s0f1  30,150 0000AA AABBFF} ${goto 400}${downspeedgraph wlp3s0  30,150 0000FF AABBFF}
+${voffset -53}${goto 400}${upspeedgraph   enp4s0f1 -30,150 000088 8899CC} ${goto 400}${upspeedgraph   wlp3s0 -30,150 000088 8899CC}
+${voffset -115}${font Source Han Sans:size=11:style=normal}
 ${goto 110}${if_up wlp3s0}${wireless_essid wlp3s0} (${wireless_link_qual wlp3s0}/${wireless_link_qual_max wlp3s0})${endif}
 ${voffset -70}${goto 260}${font Source Code Pro:size=11}Download: ${goto 350}${downspeed enp4s0f1}${goto 370}+${downspeed wlp3s0}
 ${goto 260}Upload: ${goto 350}${upspeed enp4s0f1}${goto 370}+${upspeed wlp3s0}
