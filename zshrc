@@ -40,6 +40,8 @@ alias wget='wget --continue'
 alias Make='make clean && make'
 alias astyle='astyle --suffix=none'
 alias tmux="TERM=screen-256color-bce tmux"
+alias ssh='ssh -Y' 
+alias less='less -R'
 
 #-----  Prompt design  -----------------------------------------------------------------------------
 PROMPT=$(print "\
