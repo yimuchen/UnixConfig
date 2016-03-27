@@ -22,7 +22,6 @@ export LC_ALL="en_GB.UTF-8"
 #-----  Common environment variables  --------------------------------------------------------------
 export EDITOR="vim"
 export TABSIZE=2
-export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
 export LC_ALL="en_GB.UTF-8"
 
 

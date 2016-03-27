@@ -1,0 +1,13 @@
+snippet HEAD_COMMENT "Header comment for html files" b
+<!------------------------------------------------------------------------------
+
+	Filename    :  `!p snip.rv = snip.fn `
+	Description :  ${1:Online description of file}
+	Author      :  Yi-Mu 'Enoch' Chen [ ensc@hep1.phys.ntu.edu.tw ] 
+
+------------------------------------------------------------------------------->
+endsnippet
+
+snippet SEP_COMMENT "Seperator comments" b
+`!p snip.rv = '<!--  '` ${1:Seperator name} `!p snip.rv = ' ' + '-'*(66-len(t[1])) + ' -->'`
+endsnippet
