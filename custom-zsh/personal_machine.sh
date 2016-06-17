@@ -30,3 +30,7 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ROOTSYS/lib
 
 #-----  Ruby settings  ---------------------------------------------------------
 export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
+
+
+#----- Optirun -----------------------------------------------------------------
+alias optirun="LD_PRELOAD=\"libpthread.so.0 libGL.so.1\" __GL_THREADED_OPTIMIZATIONS=1 optirun" 

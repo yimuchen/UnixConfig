@@ -39,3 +39,18 @@ function check_dir() {
       fi
    fi
 }
+
+function convert_pdf() 
+{
+   ## Options given at
+   ## http://stackoverflow.com/questions/6605006/convert-pdf-to-image-with-high-resolution
+   local input_file=$1
+   local output_file=${input_file/.pdf/.png} 
+   convert \
+      -density 150 \
+      -trim \
+      $input_file \
+      -quality 100 \
+      -sharpen 0x1.0 \
+      $output_file
+}

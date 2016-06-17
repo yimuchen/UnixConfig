@@ -4,7 +4,7 @@
 \usepackage{fontspec}
 \usepackage{unicode-math}
 
-%% Font settings 
+%% Font settings
 %\setmathfont{Latin Modern Math}
 %\setmathfont[range=\mathit/{latin,Latin,num,Greek,greek}]{Linux Libertine O Italic}
 %\setmathfont[range=\mathup/{latin,Latin,num,Greek,greek}]{Linux Libertine O}
@@ -19,13 +19,13 @@
 \newcommand{\mean}[1]{\ensuremath{\left\langle #1 \right\rangle}}
 \newcommand{\efrac}[2]{\ensuremath{\enc{\frac{#1}{#2}}}}
 
-%% Vector operators 
+%% Vector operators
 \newcommand{\cross}{\ensuremath{\times}}
 
 %% Differential operators
 \newcommand{\diff}[2]{ \frac{d #1}{d #2} }
-\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} 
-\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}} 
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}}
 \newcommand{\pdc}[3]{ \left( \frac{\partial #1}{\partial #2} \right)_{#3}}
 \newcommand{\dive}{\ensuremath{\vec{\nabla}\cdot}}
 \newcommand{\grad}{\ensuremath{\vec{\nabla}}}
@@ -43,18 +43,21 @@
 \newcommand{\braket}[2]{\ensuremath{\left< #1 \vphantom{#2} \right| \left. #2 \vphantom{#1} \right>}}
 \newcommand{\Obraket}[3]{\ensuremath{ \left< #1 \vphantom{#2} \vphantom{#3} \right| #2 \left| \vphantom{#1} \vphantom{#2} #3 \right>}}
 
-%% contraction notation 
+%% contraction notation
 \newcommand{\con}[2]{\ensuremath{\left< #1 \,,\, #2 \right>}}
 
-%% Functions 
+%% Functions
 \newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
 \newcommand{\sinc}[1]{\ensuremath{\textnormal{sinc}\enc{#1}}}
 \newcommand{\set}[1]{\ensuremath{\left\lbrace #1 \right\rbrace}}
 \newcommand{\cond}[2]{\ensuremath{\left. \left( #1 \right) \right|_{#2} }}
 \newcommand{\Real}[1]{\ensuremath{\mathbb{Re}\encsq{#1}}}
 \newcommand{\atan}[1]{\ensuremath{\,\textnormal{tan}^{-1}\enc{#1}}}
+\newcommand{\asin}[1]{\ensuremath{\,\textnormal{sin}^{-1}\enc{#1}}}
+\newcommand{\acos}[1]{\ensuremath{\,\textnormal{cos}^{-1}\enc{#1}}}
 
-%% New functions 
+
+%% New functions
 \let\oldsin\sin
 \let\oldcos\cos
 \let\oldtan\tan
@@ -69,4 +72,3 @@
 
 %%Order of 10
 \newcommand{\ODR}[1]{\ensuremath{\times 10^{#1}}}
-

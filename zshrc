@@ -13,8 +13,6 @@ autoload -Uz compinit
 compinit
 autoload bashcompinit
 bashcompinit
-export LC_ALL="en_GB.UTF-8"
-
 # End of lines added by compinstall
 # Pre-set programs
 
@@ -22,7 +20,7 @@ export LC_ALL="en_GB.UTF-8"
 #-----  Common environment variables  --------------------------------------------------------------
 export EDITOR="vim"
 export TABSIZE=2
-export LC_ALL="en_GB.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 
 #-----  Common alias list  -------------------------------------------------------------------------
