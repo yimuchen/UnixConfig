@@ -1,22 +1,24 @@
 #-------------------------------------------------------------------------------
 #
 #   File        : ntugrid.sh
-#   Descriptions: NTUGrid specific 
+#   Descriptions: NTUGrid specific
 #
 #-------------------------------------------------------------------------------
+
+# Setting machine specific variables
 export WORKPATH="/wk_cms/yichen/"
+export LD_LIBRARY_PATH=$HOME/local/lib/root/:$LD_LIBRARY_PATH
+
+## Loading common settings between machines
+source ~/.custom-zsh/xrd_ntugrid.sh
+source ~/.custom-zsh/cmssw.sh
+
+## Machine specific aliases
+unset SSH_ASKPASS
 
 alias usecms='source /cvmfs/cms.cern.ch/cmsset_default.sh'
 alias wget='wget --no-check-certificate'
 
-unset SSH_ASKPASS
-
-export LD_LIBRARY_PATH=$HOME/local/lib/root/:$LD_LIBRARY_PATH
-
-source ~/.custom-zsh/xrd_ntugrid.sh
-source ~/.custom-zsh/cmssw.sh
-
-#-----  Node aliasing  ---------------------------------------------------------
 alias node01='ssh -Y node01'
 alias node02='ssh -Y node02'
 alias node03='ssh -Y node03'
@@ -66,4 +68,3 @@ alias cn25='ssh -Y  cn25'
 alias cn26='ssh -Y  cn26'
 alias cn27='ssh -Y  cn27'
 alias cn28='ssh -Y  cn29'
-

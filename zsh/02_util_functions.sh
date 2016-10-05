@@ -1,6 +1,7 @@
 function extract () {
 if [ -f $1 ] ; then
       case $1 in
+      *,tar.xz)    tar xvf $1     ;;
       *.tar.bz2)   tar xvjf $1    ;;
       *.tar.gz)    tar xvzf $1    ;;
       *.bz2)       bunzip2 $1     ;;
@@ -22,7 +23,7 @@ fi
 
 function check_dir() {
    local check_path=""
-   check_path=$1 ## Takes exactly one argument 
+   check_path=$1 ## Takes exactly one argument
 
    if [[ -f $check_path ]]; then
       print "${RED}ERROR!${NC} File $check_path exists instead of directory!\n"
@@ -31,26 +32,26 @@ function check_dir() {
 
    if [[ ! -d $check_path ]]; then
       printf "${PURPLE}Warning:${NC} Directory doesn't exist, creating...\n"
-      mkdir -p $check_path 
+      mkdir -p $check_path
       if [[ -d $check_path ]]; then
          return true;
-      else 
+      else
          return false;
       fi
    fi
 }
 
-function convert_pdf() 
+function convert_pdf()
 {
    ## Options given at
    ## http://stackoverflow.com/questions/6605006/convert-pdf-to-image-with-high-resolution
    local input_file=$1
-   local output_file=${input_file/.pdf/.png} 
-   convert \
-      -density 150 \
-      -trim \
-      $input_file \
-      -quality 100 \
+   local output_file=${input_file/.pdf/.png}
+   convert           \
+      -density 150   \
+      -trim          \
+      $input_file    \
+      -quality 100   \
       -sharpen 0x1.0 \
       $output_file
 }
