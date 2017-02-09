@@ -66,7 +66,12 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
 
 #--------------------------------------------------------------------------------  
 #  Navigation completions
-#--------------------------------------------------------------------------------  
+#-------------------------------------------------------------------------------- 
+setopt AUTO_PUSHD
+setopt PUSHD_MINUS
+setopt CDABLE_VARS
+zstyle ':completion:*:directory-stack' list-colors '=(#b) #([0-9]#)*( *)==95=38;5;12'
+
 zstyle ':completion:*:cd:*'            ignore-parents parent pwd
 zstyle ':completion:*:*:(cd):*:*files' ignored-patterns '*~' file-sort access
 zstyle ':completion:*:*:(cd):*'        file-sort access
@@ -110,6 +115,10 @@ zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns \
    adm bin daemon halt lp named shutdown sync
 zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
   'scp1@192.168.1.100' 'scp1@brutus.ethup.se' 'trapd00r@90.225.22.81'
+
+zstyle -s ':completion:*:hosts' hosts _ssh_config
+[[ -r ~/.ssh/config ]] && _ssh_config+=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p'))
+zstyle ':completion:*:hosts' hosts $_ssh_config
 
 
 zstyle '*' single-ignored show

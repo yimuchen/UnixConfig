@@ -33,4 +33,6 @@ Gcc(){
 
 genlatex(){
    xelatex --shell-escape -synctex=1 -interaction=nonstopmode $1
+   bibtex  ${1%%.*}
+   xelatex --shell-escape -synctex=1 -interaction=nonstopmode $1
 }

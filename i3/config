@@ -9,7 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+# Mod4 is the super (windows) key
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -27,7 +28,7 @@ font pango:Source Code Pro 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -152,16 +153,15 @@ bar {
         status_command i3status
 }
 
-# Moving container to VGA 
+# Moving container to VGA
 bindsym $mod+x move container to output VGA1
 bindsym $mod+z move container to output LVDS1
-exec --no-startup-id monitor-setup.sh 
+exec --no-startup-id monitor-setup.sh
 
-#Hotkey for opening applications 
-bindsym $mod+Shift+p exec zathura #pdf browerser
-bindsym $mod+Shift+o exec firefox #firefox 
+#Hotkey for opening applications
+bindsym $mod+Control+p exec zathura #pdf browser
+bindsym $mod+Control+o exec firefox #firefox
+bindsym $mod+Control+e exec atom
 
-#Application autostart 
-exec fcitx 
-exec terminator
-
+#Application autostart
+exec fcitx
