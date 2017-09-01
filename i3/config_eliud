@@ -8,15 +8,18 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+for_window [class="^.*"] border pixel 1
 
-# Mod4 is the super (windows) key
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
+font pango:Ubuntu 10
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Source Code Pro 8
+#font pango:DejaVu Sans Mono 8
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -24,13 +27,31 @@ font pango:Source Code Pro 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# Applications
+exec --no-startup-id nitrogen --restore
+exec sleep 1;
+exec --no-startup-id compton -b
+exec --no-startup-id ~/.screenlayout/screen_dual.sh
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# start dmenu (a program launcher)
+#bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --display-binary
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # change focus
 bindsym $mod+j focus left
@@ -63,7 +84,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -113,6 +134,23 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -143,26 +181,28 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+	colors {
+	background $transparent
+	background #2B2C2B
+    statusline #F9FAF9
+   	separator  #454947
+
+   	#                                  border  backgr. text
+	focused_workspace  #F9FAF9 #16A085 #2B2C2B
+	active_workspace   #595B5B #353836 #FDF6E3
+	inactive_workspace #595B5B #353836 #EEE8D5
+	urgent_workspace   #16A085 #FDF6E3 #E5201D
+	}
+
 }
 
-# Moving container to VGA
-bindsym $mod+x move container to output VGA1
-bindsym $mod+z move container to output LVDS1
-exec --no-startup-id monitor-setup.sh
+# class                 border  backgr. text    indicator child_border
+client.focused          #2f63b7 #3973ac #ffffff #b7d2ff   #3973ac
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-#Hotkey for opening applications
-bindsym $mod+Return    exec konsole
-bindsym $mod+Control+e exec atom
-bindsym $mod+Control+p exec zathura #pdf browser
-bindsym $mod+Control+o exec firefox #firefox
-bindsym $mod+d         exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-#Application autostart
-exec compton -C -G -b
-exec fcitx
-exec conky -c ~/.Conky_config/conkyrc.lua
-exec conky -c ~/.Conky_config/conkyrc_i3.lua
+exec --no-startup-id volumeicon
+exec --no-startup-id nm-applet
+exec --no-startup-id fcitx

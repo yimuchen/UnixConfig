@@ -149,6 +149,8 @@
 \newcommand{\ptvecmiss}{\ensuremath{{\vec p}_{\mathrm{T}}^{\kern1pt\text{miss}}}\xspace}
 
 % roman face derivative
+\newcommand{\cmsSymbolFace}{\mathrm}
+
 \newcommand{\dd}[2]{\ensuremath{\frac{\cmsSymbolFace{d} #1}{\cmsSymbolFace{d} #2}}}
 \newcommand{\ddinline}[2]{\ensuremath{\cmsSymbolFace{d} #1/\cmsSymbolFace{d} #2}}
 \newcommand{\rd}{\ensuremath{\cmsSymbolFace{d}}}
@@ -158,7 +160,6 @@
 
 
 
-\ifthenelse{\boolean{cms@italic}}{\newcommand{\cmsSymbolFace}{\relax}}{\newcommand{\cmsSymbolFace}{\mathrm}}
 
 % Particle names which track the italic/non-italic face convention
 \newcommand{\zp}{\ensuremath{\cmsSymbolFace{Z}^\prime}\xspace} % plain Z'

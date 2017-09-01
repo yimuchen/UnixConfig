@@ -1,3 +1,11 @@
+#*******************************************************************************
+ #
+ #  Filename    : 02_util_function.sh
+ #  Description : Common one line function call for easy modification
+ #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
+ #
+#*******************************************************************************
+
 function extract () {
 if [ -f $1 ] ; then
       case $1 in
@@ -48,7 +56,7 @@ function convert_pdf()
    local input_file=$1
    local output_file=${input_file/.pdf/.png}
    convert           \
-      -density 150   \
+      -density 400   \
       -trim          \
       $input_file    \
       -quality 100   \

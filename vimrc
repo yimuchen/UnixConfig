@@ -65,11 +65,11 @@ set wildignore+=.DS_Store,.git,.hg,.svn
 set wildignore+=*~,*.swp,*.tmp
 
 ""----  Fold settings  ---------------------------------------------------------
-autocmd filetype c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd filetype python setlocal foldmethod=indent
+"autocmd filetype c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
+"autocmd filetype python setlocal foldmethod=indent
 
-autocmd filetype c,cpp  setlocal foldlevelstart=1  "Close all folds for cpp files
-autocmd filetype python setlocal foldlevelstart=2
+""autocmd filetype c,cpp  setlocal foldlevelstart=1  "Close all folds for cpp files
+""autocmd filetype python setlocal foldlevelstart=2
 
 ""----  Vundle settings  -------------------------------------------------------
 set nocompatible

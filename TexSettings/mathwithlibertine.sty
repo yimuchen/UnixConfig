@@ -1,0 +1,19 @@
+%% Font definition
+\usepackage{amsmath} % Must load definitions of command before font settings
+\usepackage{fontspec}
+\usepackage{unicode-math} % Must be placed here before any font settings
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont[Scale=MatchLowercase]{Linux Libertine Mono}
+
+% Use latin modern for math symbols
+\setmathfont{XITS Math} % Using latin modern symbols by default
+
+% Fall back to main font for latin and numerical characters
+\setmathfont[range=\mathit/{latin,Latin,num}]{Linux Libertine O Italic}
+\setmathfont[range=\mathup/{latin,Latin,num}]{Linux Libertine O}
+\setmathfont[range=\mathbfup/{latin,Latin,num}]{Linux Libertine O Bold}
+\setmathfont[range=\mathbfit/{latin,Latin,num}]{Linux Libertine O Bold Italic}
+
+% Additional character
+\setmathfont[range={"221E}]{Linux Libertine O}% "0221E = \infty
