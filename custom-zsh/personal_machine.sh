@@ -9,11 +9,12 @@
 export XDG_CONFIG_HOME=$HOME/.fontconf/
 export ROOTSYS=/usr
 export PATH=$PATH:$ROOTSYS/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ROOTSYS/lib
 export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
 export PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
 export PATH=$PATH:$HOME/.py_script
+export PYTHONPATH=$PYTHONPATH:$HOME/.pylib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ROOTSYS/lib
 export TDR_DIR=$HOME/HomeWork/CMS-Group/TDRMaster
 
 # Importing common functions
