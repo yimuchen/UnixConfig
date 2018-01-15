@@ -5,28 +5,26 @@
    'section comment':
       'prefix':'section comment'
       'body':"""
-      /*******************************************************************************
-      *  ${1:Section Name}
-      *******************************************************************************/
+      /*------------------------------------------------------------------------------
+      ${1:Section Name}
+      -------------------------------------------------------------------------------*/
       $0
       """
    'header comment':
       'prefix':'header comment'
       'body':"""
-      /*******************************************************************************/
       /**
        * @file    ${1:filename}
        * @brief   ${2:brief description of file}
        * @author  ${3:Yi-Mu "Enoch" Chen (ensc@hep1.phys.ntu.edu.tw)}
        * ${4:@details Detailed descriptions}
        */
-      /*******************************************************************************/
       ${0}
       """
    'seperator comment':
       'prefix':'seperator comment'
       'body':"""
-      /******************************************************************************
+      /*------------------------------------------------------------------------------*/
       """
 
 #-------------------------------------------------------------------------------
@@ -43,15 +41,15 @@
    'header comment':
       'prefix':'header comment'
       'body':"""
-      #*******************************************************************************
-       #
-       #  Filename    : ${1:File Name}
-       #  Description : ${2:One Line descrption of file contents}
-       #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
-       #
-       #  ${3: Additional comments}
-       #
-      #*******************************************************************************
+      #-------------------------------------------------------------------------------
+      #
+      #  Filename    : ${1:File Name}
+      #  Description : ${2:One Line descrption of file contents}
+      #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
+      #
+      #  ${3: Additional comments}
+      #
+      #--------------------------------------------------------------------------------
       $0
       """
 
@@ -188,15 +186,15 @@
    'header comment':
       'prefix':'header comment'
       'body':"""
-      #*******************************************************************************
-       #
-       #  Filename    : ${1:File Name}
-       #  Description : ${2:One Line descrption of file contents}
-       #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
-       #
-       #  ${3: Additional comments}
-       #
-      #*******************************************************************************
+      #-------------------------------------------------------------------------------
+      #
+      #  Filename    : ${1:File Name}
+      #  Description : ${2:One Line descrption of file contents}
+      #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
+      #
+      #  ${3: Additional comments}
+      #
+      #-------------------------------------------------------------------------------
       $0
       """
    'section comment':

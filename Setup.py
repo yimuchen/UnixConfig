@@ -54,6 +54,7 @@ def softlink():
         print( "Soft linking:", sourcepath, '->', targetpath )
         subprocess.call( ["ln","-s",sourcepath,targetpath] )
 
+
 def installvim():
     basedir   = os.path.join(homedir,".vim","bundle")
     vundledir = os.path.join(basedir,"Vundle.vim")

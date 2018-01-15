@@ -29,7 +29,7 @@
 \newcommand{\anticom}[2]{\ensuremath{\left\lbrace \, #1 \, , \, #2 \right\rbrace}}
 
 %%Defining Dirac Notation shorthand
-\newcommand{\bra}[1]{\ensuremath{\left\langle #1 \right|}}
+\newcommand{\bra}[1]{\ensuremath{\left\langle #1 \right\rvert}}
 \newcommand{\ket}[1]{\ensuremath{\left| #1 \right\rangle }}
 \newcommand{\braket}[2]{\ensuremath{\left< #1 \vphantom{#2} \right| \left. #2 \vphantom{#1} \right>}}
 \newcommand{\Obraket}[3]{\ensuremath{ \left< #1 \vphantom{#2} \vphantom{#3} \right| #2 \left| \vphantom{#1} \vphantom{#2} #3 \right>}}
@@ -38,11 +38,17 @@
 \newcommand{\con}[2]{\ensuremath{\left< #1 \,,\, #2 \right>}}
 
 %% Functions
-\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\providecommand{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
+% Override existing abs command
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+
+
 \newcommand{\set}[1]{\ensuremath{\left\lbrace #1 \right\rbrace}}
 \newcommand{\cond}[2]{\ensuremath{\left. \left( #1 \right) \right|_{#2} }}
 \newcommand{\Real}[1]{\ensuremath{\mathbb{Re}\encsq{#1}}}
-\newcommand{\sinc}{\ensuremath{\mathrm{sinc}}
+\newcommand{\sinc}{\ensuremath{\mathrm{sinc}}}
 \newcommand{\atan}{\ensuremath{{\tan}^{-1}}}
 \newcommand{\asin}{\ensuremath{{\sin}^{-1}}}
 \newcommand{\acos}{\ensuremath{{\cos}^{-1}}}

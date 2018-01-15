@@ -239,7 +239,8 @@
 \providecommand{\PSGt}{\ensuremath{\widetilde{\tau}}\xspace} % stau
 \providecommand{\PZ}{\ensuremath{\cmsSymbolFace{Z}}\xspace} % may have some confusion with the \xspace...
 \providecommand{\PZpr}{\ensuremath{\cmsSymbolFace{Z}^\prime}\xspace} % plain Z' using prime
-\renewcommand{\PWpr}{\ensuremath{\cmsSymbolFace{W}^\prime}\xspace} % use prime like pennames2
+\providecommand{\PW}{\ensuremath{\cmsSymbolFace{W}\xspace}} % may have some confusion with the \xspace...
+\providecommand{\PWpr}{\ensuremath{\cmsSymbolFace{W}^\prime}\xspace} % use prime like pennames2
 \providecommand{\PGn}{\ensuremath{\nu}\xspace} % generic neutrino
 \providecommand{\PAGn}{\ensuremath{\overline{\nu}}\xspace} % generic neutrino
 \providecommand{\PSQtDo}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_1}\xspace}
@@ -274,11 +275,6 @@
 % our extensions for pennames2
 \providecommand{\Pepm}{\ensuremath{\cmsSymbolFace{e}^\pm}\xspace}
 % for APS style tables
-\ifthenelse{\boolean{cms@external}}{%
-\newenvironment{scotch}[1]{\protect\centering\ruledtabular\tabular{#1}}{\endtabular\endruledtabular}
-}{
-\newenvironment{scotch}[1]{\protect\centering\tabular{#1}\hline\hline}{\hline\endtabular}
-}
 
 % SM (still to be classified)
 
