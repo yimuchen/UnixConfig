@@ -23,6 +23,7 @@ source $HOME/.custom-zsh/tdr_settings.sh
 
 # Machine specific alias
 alias optirun="LD_PRELOAD=\"libpthread.so.0 libGL.so.1\" __GL_THREADED_OPTIMIZATIONS=1 optirun"
+alias gphoto2='gphoto2 --port usb:'
 
 #-------------------------------------------------------------------------------
 #   Machine specific command pack
@@ -40,16 +41,30 @@ Gcc(){
 #-------------------------------------------------------------------------------
 #   Networking test
 #-------------------------------------------------------------------------------
+ntunode() {
+  random=$(od -An -N1 -i < /dev/urandom)
+  printf "ntunode%02d" $((random%20+1))
+}
+
 ntugridvpn() {
-  #sshuttle -r yichen@ntugrid5  0/0
-  # sshuttle is not working for some reason....
-  # Using global firefox proxy instead
-  ssh -D 1080 yichen@ntugrid5
+  sshuttle -r yichen@ntugrid5  0/0 --exclude=140.112.104.121
+}
+
+lxplusvpn() {
+  machine="";
+  ip="";
+  while [ -z $ip ] ; do
+    random=$(od -An -N1 -i < /dev/urandom)
+    machine=$(printf "lxplus%03d.cern.ch" $((random%300+1)))
+    ip=$(getent ahosts $machine | grep 'RAW' | awk '{print $1}' )
+    echo $machine $ip
+  done
+  sshuttle -r yichen@$machine 0/0 --exclude=$ip
 }
 
 fixrootpdf() {
   file=$1
-  gs                          \
+  gs                         \
     -sDEVICE=pdfwrite        \
     -dCompatibilityLevel=1.4 \
     -dPDFSETTINGS=/screen    \
@@ -60,3 +75,18 @@ fixrootpdf() {
     ${file}
   mv tmp.pdf ${file}
 }
+
+displayremote() {
+  remote=$1
+  scp $remote /tmp
+  display /tmp/$(basename $remote)
+}
+
+#-------------------------------------------------------------------------------
+#   Midi playback aliases
+#-------------------------------------------------------------------------------
+alias playmidi="fluidsynth -l \
+  --audio-driver=alsa         \
+  --midi-driver=alsa_seq      \
+  --no-shell                  \
+  /usr/share/soundfonts/FluidR3_GM.sf2"

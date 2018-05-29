@@ -156,7 +156,7 @@
 \newcommand{\rd}{\ensuremath{\cmsSymbolFace{d}}}
 \newcommand{\re}{\ensuremath{\cmsSymbolFace{e}}}
 % absolute value
-\newcommand{\abs}[1]{\ensuremath{\lvert #1 \rvert}}
+%\newcommand{\abs}[1]{\ensuremath{\lvert #1 \rvert}}
 
 
 
@@ -169,9 +169,9 @@
 
 % Extensions for missing names in PENNAMES % note no xspace, to match syntax in PENNAMES
 \newcommand{\cPgn}{\ensuremath{\nu}} % generic neutrino
-\providecommand{\Pgn}{\ensuremath{\nu}} % generic neutrino
+\newcommand{\Pgn}{\ensuremath{\nu}} % generic neutrino
 \newcommand{\cPagn}{\ensuremath{\overline{\nu}}} % generic neutrino
-\providecommand{\Pagn}{\ensuremath{\overline{\nu}}} % generic neutrino
+\newcommand{\Pagn}{\ensuremath{\overline{\nu}}} % generic neutrino
 \newcommand{\cPgg}{\ensuremath{\gamma}} % gamma
 \newcommand{\cPJgy}{\ensuremath{\cmsSymbolFace{J}\hspace{-.08em}/\hspace{-.14em}\psi}} % J/Psi (no mass)
 \newcommand{\cPZ}{\ensuremath{\cmsSymbolFace{Z}}} % plain Z (no superscript 0)
@@ -194,86 +194,86 @@
 \newcommand{\cPaq}{\ensuremath{\overline{\cmsSymbolFace{q}}}} % generic anti-quark
 \newcommand{\cPKstz}{\ensuremath{\cmsSymbolFace{K}^{\ast0}}\xspace} %note has xspace
 % future symbols from heppennames2
-\providecommand{\PH}{\ensuremath{\cmsSymbolFace{H}}\xspace} % plain Higgs
-\providecommand{\Ph}{\ensuremath{\cmsSymbolFace{h}}\xspace} % SUSY Higgs
-\providecommand{\Pa}{\ensuremath{\cmsSymbolFace{a}}\xspace}
-\providecommand{\PSA}{\ensuremath{\cmsSymbolFace{A}}\xspace} %pseudoscalar A Higgs
-\providecommand{\PJGy}{\ensuremath{\cmsSymbolFace{J}\hspace{-.08em}/\hspace{-.14em}\psi}\xspace} % J/Psi (no mass)
-\providecommand{\PBzs}{\ensuremath{\cmsSymbolFace{B}^0_\cmsSymbolFace{s}}\xspace} % B^0_s
-\providecommand{\Pg}{\ensuremath{\cmsSymbolFace{g}}\xspace} % generic gluon
-\providecommand{\PSg}{\ensuremath{\widetilde{\cmsSymbolFace{g}}}\xspace} % gluino
-\providecommand{\PSQ}{\ensuremath{\widetilde{\cmsSymbolFace{q}}}\xspace} % squark
-\providecommand{\PSGm}{\ensuremath{\widetilde{\mu}}\xspace} % smuon
-\providecommand{\PSe}{\ensuremath{\widetilde{\cmsSymbolFace{e}}}\xspace} % selectron
-\providecommand{\PASQ}{\ensuremath{\overline{\widetilde{\cmsSymbolFace{q}}}}\xspace} % anti quark
-\providecommand{\PXXG}{\ensuremath{\cmsSymbolFace{G}}\xspace} % graviton
-\providecommand{\PXXSG}{\ensuremath{\widetilde{\PXXG}}\xspace} % gravitino
-\providecommand{\PSGcp}{\ensuremath{\widetilde{\chi}^+}\xspace}
-\providecommand{\PSGc}{\ensuremath{\widetilde{\chi}}\xspace} % neutralino
-\providecommand{\PSGcz}{\ensuremath{\widetilde{\chi}^0}\xspace} % neutralino with superscript 0
-\providecommand{\PSGczDo}{\ensuremath{\widetilde{\chi}^{0}_{1}}\xspace} % neutralino
-\providecommand{\PSGcmDo}{\ensuremath{\widetilde{\chi}^{-}_{1}}\xspace} % neutralino
-\providecommand{\PSGczDt}{\ensuremath{\widetilde{\chi}^{0}_{2}}\xspace} % neutralino
-\providecommand{\PSGcpm}{\ensuremath{\widetilde{\chi}^\pm}\xspace} % neutralino
-\providecommand{\PSGcpmDo}{\ensuremath{\widetilde{\chi}^\pm_{1}}\xspace} % neutralino
-\providecommand{\PSGcpDo}{\ensuremath{\widetilde{\chi}^{+}_{1}}\xspace} % neutralino
-\providecommand{\Pl}{\ensuremath{\cmsSymbolFace{l}}\xspace} % non-ell lepton
-\providecommand{\PAl}{\ensuremath{\overline{\cmsSymbolFace{l}}}\xspace} % non-ell anti-lepton
-\providecommand{\PGnl}{\ensuremath{\nu_\cmsSymbolFace{l}}\xspace} % lepton neutrino
-\providecommand{\PAGnl}{\ensuremath{\overline{\nu}_\cmsSymbolFace{l}}\xspace} % anti-lepton neutrino
-\providecommand{\PQtpr}{\ensuremath{\cmsSymbolFace{t}^{\prime}}\xspace} % t'
-\providecommand{\PAQtpr}{\ensuremath{\bar{\cmsSymbolFace{t}}^\prime}\xspace} % t'-bar; needs to be converted to overline-requires rework a la heppennames
-\providecommand{\PQbpr}{\ensuremath{\cmsSymbolFace{b}^{\prime}}\xspace} % b'
-\providecommand{\PAQbpr}{\ensuremath{\bar{\cmsSymbolFace{b}}^\prime}\xspace} % b'-bar; needs same as anti-t'
-\providecommand{\PGg}{\ensuremath{\gamma}\xspace} % gamma
-\providecommand{\PKzS}{\ensuremath{\cmsSymbolFace{K}^0_\cmsSymbolFace{S}}\xspace} % K short
-\providecommand{\PBs}{\ensuremath{\cmsSymbolFace{B}_\cmsSymbolFace{s}}\xspace} % B sub s
-\providecommand{\PSQu}{\ensuremath{\widetilde{\cmsSymbolFace{u}}}\xspace}
-\providecommand{\PSQd}{\ensuremath{\widetilde{\cmsSymbolFace{d}}}\xspace}
-\providecommand{\PSQc}{\ensuremath{\widetilde{\cmsSymbolFace{c}}}\xspace}
-\providecommand{\PSQs}{\ensuremath{\widetilde{\cmsSymbolFace{s}}}\xspace}
-\providecommand{\PSQt}{\ensuremath{\widetilde{\cmsSymbolFace{t}}}\xspace} % stop
-\providecommand{\PSQb}{\ensuremath{\widetilde{\cmsSymbolFace{b}}}\xspace}
-\providecommand{\PASQt}{\ensuremath{\overline{\widetilde{\cmsSymbolFace{t}}}}\xspace} % anti stop
-\providecommand{\PASQb}{\ensuremath{\overline{\widetilde{\cmsSymbolFace{b}}}}\xspace} % anti sbottom
-\providecommand{\PSGt}{\ensuremath{\widetilde{\tau}}\xspace} % stau
-\providecommand{\PZ}{\ensuremath{\cmsSymbolFace{Z}}\xspace} % may have some confusion with the \xspace...
-\providecommand{\PZpr}{\ensuremath{\cmsSymbolFace{Z}^\prime}\xspace} % plain Z' using prime
-\providecommand{\PW}{\ensuremath{\cmsSymbolFace{W}\xspace}} % may have some confusion with the \xspace...
-\providecommand{\PWpr}{\ensuremath{\cmsSymbolFace{W}^\prime}\xspace} % use prime like pennames2
-\providecommand{\PGn}{\ensuremath{\nu}\xspace} % generic neutrino
-\providecommand{\PAGn}{\ensuremath{\overline{\nu}}\xspace} % generic neutrino
-\providecommand{\PSQtDo}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_1}\xspace}
-\providecommand{\PSQtDt}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_2}\xspace}
-\providecommand{\PQt}{\ensuremath{\cmsSymbolFace{t}}\xspace} % t
-\providecommand{\PAQt}{\ensuremath{\overline{\cmsSymbolFace{t}}}\xspace} %
-\providecommand{\PQb}{\ensuremath{\cmsSymbolFace{b}}\xspace} % b
-\providecommand{\PAQb}{\ensuremath{\overline{\cmsSymbolFace{b}}}\xspace} %
-\providecommand{\PGm}{\ensuremath{\mu}\xspace} % muon
-\providecommand{\PGmm}{\ensuremath{\mu^-}\xspace} % muon
-\providecommand{\PGmp}{\ensuremath{\mu^+}\xspace} % muon
-\providecommand{\PGmpm}{\ensuremath{\mu^\pm}\xspace} % muon
-\providecommand{\PGt}{\ensuremath{\tau}\xspace} % tau
-\providecommand{\PAGt}{\ensuremath{\overline{\tau}}\xspace} % anti-tau
-\providecommand{\PQq}{\ensuremath{\cmsSymbolFace{q}}\xspace} % quark (generic)
-\providecommand{\PQd}{\ensuremath{\cmsSymbolFace{d}}\xspace} % down quark
-\providecommand{\PQu}{\ensuremath{\cmsSymbolFace{u}}\xspace} % up quark
-\providecommand{\PQs}{\ensuremath{\cmsSymbolFace{s}}\xspace} % top quark
-\providecommand{\PQc}{\ensuremath{\cmsSymbolFace{c}}\xspace} % top quark
-\providecommand{\PAQq}{\ensuremath{\overline{\cmsSymbolFace{q}}}\xspace} % quark (generic)
-\providecommand{\PAQd}{\ensuremath{\overline{\cmsSymbolFace{d}}}\xspace} % down quark
-\providecommand{\PAQu}{\ensuremath{\overline{\cmsSymbolFace{u}}}\xspace} % up quark
-\providecommand{\PAQs}{\ensuremath{\overline{\cmsSymbolFace{s}}}\xspace} % top quark
-\providecommand{\PAQc}{\ensuremath{\overline{\cmsSymbolFace{c}}}\xspace} % top quark
-\providecommand{\PGne}{\ensuremath{\nu_\cmsSymbolFace{e}}\xspace} % electron neutrino
-\providecommand{\PAGne}{\ensuremath{\overline{\nu}_\cmsSymbolFace{e}}\xspace} % anti-electron neutrino
-\providecommand{\PGnGm}{\ensuremath{\nu_\PGm}\xspace} % muon neutrino
-\providecommand{\PAGnGm}{\ensuremath{\overline{\nu}_\PGm}\xspace} % anti-muon neutrino
-\providecommand{\PGnGt}{\ensuremath{\nu_\PGt}\xspace} % tau neutrino
-\providecommand{\PAGnGt}{\ensuremath{\overline{\nu}_\PGt}\xspace} % anti-tau neutrino
-\providecommand{\PAp}{\ensuremath{\overline{\cmsSymbolFace{p}}}\xspace} % anti-proton
+\newcommand{\PH}{\ensuremath{\cmsSymbolFace{H}}\xspace} % plain Higgs
+\newcommand{\Ph}{\ensuremath{\cmsSymbolFace{h}}\xspace} % SUSY Higgs
+\newcommand{\Pa}{\ensuremath{\cmsSymbolFace{a}}\xspace}
+\newcommand{\PSA}{\ensuremath{\cmsSymbolFace{A}}\xspace} %pseudoscalar A Higgs
+\newcommand{\PJGy}{\ensuremath{\cmsSymbolFace{J}\hspace{-.08em}/\hspace{-.14em}\psi}\xspace} % J/Psi (no mass)
+\newcommand{\PBzs}{\ensuremath{\cmsSymbolFace{B}^0_\cmsSymbolFace{s}}\xspace} % B^0_s
+\newcommand{\Pg}{\ensuremath{\cmsSymbolFace{g}}\xspace} % generic gluon
+\newcommand{\PSg}{\ensuremath{\widetilde{\cmsSymbolFace{g}}}\xspace} % gluino
+\newcommand{\PSQ}{\ensuremath{\widetilde{\cmsSymbolFace{q}}}\xspace} % squark
+\newcommand{\PSGm}{\ensuremath{\widetilde{\mu}}\xspace} % smuon
+\newcommand{\PSe}{\ensuremath{\widetilde{\cmsSymbolFace{e}}}\xspace} % selectron
+\newcommand{\PASQ}{\ensuremath{\overline{\widetilde{\cmsSymbolFace{q}}}}\xspace} % anti quark
+\newcommand{\PXXG}{\ensuremath{\cmsSymbolFace{G}}\xspace} % graviton
+\newcommand{\PXXSG}{\ensuremath{\widetilde{\PXXG}}\xspace} % gravitino
+\newcommand{\PSGcp}{\ensuremath{\widetilde{\chi}^+}\xspace}
+\newcommand{\PSGc}{\ensuremath{\widetilde{\chi}}\xspace} % neutralino
+\newcommand{\PSGcz}{\ensuremath{\widetilde{\chi}^0}\xspace} % neutralino with superscript 0
+\newcommand{\PSGczDo}{\ensuremath{\widetilde{\chi}^{0}_{1}}\xspace} % neutralino
+\newcommand{\PSGcmDo}{\ensuremath{\widetilde{\chi}^{-}_{1}}\xspace} % neutralino
+\newcommand{\PSGczDt}{\ensuremath{\widetilde{\chi}^{0}_{2}}\xspace} % neutralino
+\newcommand{\PSGcpm}{\ensuremath{\widetilde{\chi}^\pm}\xspace} % neutralino
+\newcommand{\PSGcpmDo}{\ensuremath{\widetilde{\chi}^\pm_{1}}\xspace} % neutralino
+\newcommand{\PSGcpDo}{\ensuremath{\widetilde{\chi}^{+}_{1}}\xspace} % neutralino
+\newcommand{\Pl}{\ensuremath{\cmsSymbolFace{l}}\xspace} % non-ell lepton
+\newcommand{\PAl}{\ensuremath{\overline{\cmsSymbolFace{l}}}\xspace} % non-ell anti-lepton
+\newcommand{\PGnl}{\ensuremath{\nu_\cmsSymbolFace{l}}\xspace} % lepton neutrino
+\newcommand{\PAGnl}{\ensuremath{\overline{\nu}_\cmsSymbolFace{l}}\xspace} % anti-lepton neutrino
+\newcommand{\PQtpr}{\ensuremath{\cmsSymbolFace{t}^{\prime}}\xspace} % t'
+\newcommand{\PAQtpr}{\ensuremath{\bar{\cmsSymbolFace{t}}^\prime}\xspace} % t'-bar; needs to be converted to overline-requires rework a la heppennames
+\newcommand{\PQbpr}{\ensuremath{\cmsSymbolFace{b}^{\prime}}\xspace} % b'
+\newcommand{\PAQbpr}{\ensuremath{\bar{\cmsSymbolFace{b}}^\prime}\xspace} % b'-bar; needs same as anti-t'
+\newcommand{\PGg}{\ensuremath{\gamma}\xspace} % gamma
+\newcommand{\PKzS}{\ensuremath{\cmsSymbolFace{K}^0_\cmsSymbolFace{S}}\xspace} % K short
+\newcommand{\PBs}{\ensuremath{\cmsSymbolFace{B}_\cmsSymbolFace{s}}\xspace} % B sub s
+\newcommand{\PSQu}{\ensuremath{\widetilde{\cmsSymbolFace{u}}}\xspace}
+\newcommand{\PSQd}{\ensuremath{\widetilde{\cmsSymbolFace{d}}}\xspace}
+\newcommand{\PSQc}{\ensuremath{\widetilde{\cmsSymbolFace{c}}}\xspace}
+\newcommand{\PSQs}{\ensuremath{\widetilde{\cmsSymbolFace{s}}}\xspace}
+\newcommand{\PSQt}{\ensuremath{\widetilde{\cmsSymbolFace{t}}}\xspace} % stop
+\newcommand{\PSQb}{\ensuremath{\widetilde{\cmsSymbolFace{b}}}\xspace}
+\newcommand{\PASQt}{\ensuremath{\overline{\widetilde{\cmsSymbolFace{t}}}}\xspace} % anti stop
+\newcommand{\PASQb}{\ensuremath{\overline{\widetilde{\cmsSymbolFace{b}}}}\xspace} % anti sbottom
+\newcommand{\PSGt}{\ensuremath{\widetilde{\tau}}\xspace} % stau
+\newcommand{\PZ}{\ensuremath{\cmsSymbolFace{Z}}\xspace} % may have some confusion with the \xspace...
+\newcommand{\PZpr}{\ensuremath{\cmsSymbolFace{Z}^\prime}\xspace} % plain Z' using prime
+\newcommand{\PW}{\ensuremath{\cmsSymbolFace{W}\xspace}} % may have some confusion with the \xspace...
+\newcommand{\PWpr}{\ensuremath{\cmsSymbolFace{W}^\prime}\xspace} % use prime like pennames2
+\newcommand{\PGn}{\ensuremath{\nu}\xspace} % generic neutrino
+\newcommand{\PAGn}{\ensuremath{\overline{\nu}}\xspace} % generic neutrino
+\newcommand{\PSQtDo}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_1}\xspace}
+\newcommand{\PSQtDt}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_2}\xspace}
+\newcommand{\PQt}{\ensuremath{\cmsSymbolFace{t}}\xspace} % t
+\newcommand{\PAQt}{\ensuremath{\overline{\cmsSymbolFace{t}}}\xspace} %
+\newcommand{\PQb}{\ensuremath{\cmsSymbolFace{b}}\xspace} % b
+\newcommand{\PAQb}{\ensuremath{\overline{\cmsSymbolFace{b}}}\xspace} %
+\newcommand{\PGm}{\ensuremath{\mu}\xspace} % muon
+\newcommand{\PGmm}{\ensuremath{\mu^-}\xspace} % muon
+\newcommand{\PGmp}{\ensuremath{\mu^+}\xspace} % muon
+\newcommand{\PGmpm}{\ensuremath{\mu^\pm}\xspace} % muon
+\newcommand{\PGt}{\ensuremath{\tau}\xspace} % tau
+\newcommand{\PAGt}{\ensuremath{\overline{\tau}}\xspace} % anti-tau
+\newcommand{\PQq}{\ensuremath{\cmsSymbolFace{q}}\xspace} % quark (generic)
+\newcommand{\PQd}{\ensuremath{\cmsSymbolFace{d}}\xspace} % down quark
+\newcommand{\PQu}{\ensuremath{\cmsSymbolFace{u}}\xspace} % up quark
+\newcommand{\PQs}{\ensuremath{\cmsSymbolFace{s}}\xspace} % top quark
+\newcommand{\PQc}{\ensuremath{\cmsSymbolFace{c}}\xspace} % top quark
+\newcommand{\PAQq}{\ensuremath{\overline{\cmsSymbolFace{q}}}\xspace} % quark (generic)
+\newcommand{\PAQd}{\ensuremath{\overline{\cmsSymbolFace{d}}}\xspace} % down quark
+\newcommand{\PAQu}{\ensuremath{\overline{\cmsSymbolFace{u}}}\xspace} % up quark
+\newcommand{\PAQs}{\ensuremath{\overline{\cmsSymbolFace{s}}}\xspace} % top quark
+\newcommand{\PAQc}{\ensuremath{\overline{\cmsSymbolFace{c}}}\xspace} % top quark
+\newcommand{\PGne}{\ensuremath{\nu_\cmsSymbolFace{e}}\xspace} % electron neutrino
+\newcommand{\PAGne}{\ensuremath{\overline{\nu}_\cmsSymbolFace{e}}\xspace} % anti-electron neutrino
+\newcommand{\PGnGm}{\ensuremath{\nu_\PGm}\xspace} % muon neutrino
+\newcommand{\PAGnGm}{\ensuremath{\overline{\nu}_\PGm}\xspace} % anti-muon neutrino
+\newcommand{\PGnGt}{\ensuremath{\nu_\PGt}\xspace} % tau neutrino
+\newcommand{\PAGnGt}{\ensuremath{\overline{\nu}_\PGt}\xspace} % anti-tau neutrino
+\newcommand{\PAp}{\ensuremath{\overline{\cmsSymbolFace{p}}}\xspace} % anti-proton
 % our extensions for pennames2
-\providecommand{\Pepm}{\ensuremath{\cmsSymbolFace{e}^\pm}\xspace}
+\newcommand{\Pepm}{\ensuremath{\cmsSymbolFace{e}^\pm}\xspace}
 % for APS style tables
 
 % SM (still to be classified)
@@ -415,5 +415,5 @@
 
 \newcommand{\MD}{\ensuremath{{M_\mathrm{D}}}\xspace}% ED mass
 \newcommand{\Mpl}{\ensuremath{{M_\mathrm{Pl}}}\xspace}% Planck mass
-\newcommand{\Rinv} {\ensuremath{{R}^{-1}}\xspace}
+\newcommand{\Rinv}{\ensuremath{{R}^{-1}}\xspace}
 \endinput

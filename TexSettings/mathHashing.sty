@@ -38,12 +38,7 @@
 \newcommand{\con}[2]{\ensuremath{\left< #1 \,,\, #2 \right>}}
 
 %% Functions
-\providecommand{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
-% Override existing abs command
-\makeatletter
-\let\oldabs\abs
-\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-
+\newcommand{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
 
 \newcommand{\set}[1]{\ensuremath{\left\lbrace #1 \right\rbrace}}
 \newcommand{\cond}[2]{\ensuremath{\left. \left( #1 \right) \right|_{#2} }}
