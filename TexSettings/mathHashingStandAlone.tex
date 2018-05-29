@@ -1,7 +1,3 @@
-
-\usepackage{amsmath}
-\usepackage{slashed}
-
 % Defining braces
 \newcommand{\enc}[1]{\ensuremath{\left( #1 \right)}}
 \newcommand{\encsq}[1]{\ensuremath{\left[ #1 \right] }}
@@ -11,7 +7,6 @@
 
 %% Vector operators
 \newcommand{\cross}{\ensuremath{\times}}
-
 
 %% Differential operators
 \newcommand{\diff}[2]{ \frac{d #1}{d #2} }
@@ -29,7 +24,7 @@
 \newcommand{\anticom}[2]{\ensuremath{\left\lbrace \, #1 \, , \, #2 \right\rbrace}}
 
 %%Defining Dirac Notation shorthand
-\newcommand{\bra}[1]{\ensuremath{\left\langle #1 \right\rvert}}
+\newcommand{\bra}[1]{\ensuremath{\left\langle #1 \right|}}
 \newcommand{\ket}[1]{\ensuremath{\left| #1 \right\rangle }}
 \newcommand{\braket}[2]{\ensuremath{\left< #1 \vphantom{#2} \right| \left. #2 \vphantom{#1} \right>}}
 \newcommand{\Obraket}[3]{\ensuremath{ \left< #1 \vphantom{#2} \vphantom{#3} \right| #2 \left| \vphantom{#1} \vphantom{#2} #3 \right>}}
@@ -38,23 +33,24 @@
 \newcommand{\con}[2]{\ensuremath{\left< #1 \,,\, #2 \right>}}
 
 %% Functions
-\providecommand{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
-% Override existing abs command
-\makeatletter
-\let\oldabs\abs
-\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-
-
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\sinc}[1]{\ensuremath{\textnormal{sinc}\enc{#1}}}
 \newcommand{\set}[1]{\ensuremath{\left\lbrace #1 \right\rbrace}}
 \newcommand{\cond}[2]{\ensuremath{\left. \left( #1 \right) \right|_{#2} }}
 \newcommand{\Real}[1]{\ensuremath{\mathbb{Re}\encsq{#1}}}
-\newcommand{\sinc}{\ensuremath{\mathrm{sinc}}}
-\newcommand{\atan}{\ensuremath{{\tan}^{-1}}}
-\newcommand{\asin}{\ensuremath{{\sin}^{-1}}}
-\newcommand{\acos}{\ensuremath{{\cos}^{-1}}}
-
-%% Common units
+\newcommand{\atan}[1]{\ensuremath{\,\textnormal{tan}^{-1}\enc{#1}}}
+\newcommand{\asin}[1]{\ensuremath{\,\textnormal{sin}^{-1}\enc{#1}}}
+\newcommand{\acos}[1]{\ensuremath{\,\textnormal{cos}^{-1}\enc{#1}}}
 
 
-%%Order of 10
-\newcommand{\ODR}[1]{\ensuremath{\times 10^{#1}}}
+%% New functions
+\let\oldsin\sin
+\let\oldcos\cos
+\let\oldtan\tan
+%\let\oldln\ln
+%\renewcommand{\ln}[1]{\ensuremath{\textnormal{ln}\enc{#1}}}
+\renewcommand{\sin}[1]{\ensuremath{\textnormal{sin}\enc{#1}}}
+\renewcommand{\cos}[1]{\ensuremath{\textnormal{cos}\enc{#1}}}
+\renewcommand{\tan}[1]{\ensuremath{\textnormal{tan}\enc{#1}}}
+\newcommand{\pcos}[2]{\ensuremath{\textnormal{cos}^{#2}\enc{#1}}}
+\newcommand{\psin}[2]{\ensuremath{\textnormal{sin}^{#2}\enc{#1}}}

@@ -224,7 +224,7 @@ gauge = {
 },
 {
     name='fs_used_perc',           arg='/home/',                     max_value=100,
-    x=100,                          y=850,
+    x=100,                          y=820,
     graph_radius=73,
     graph_thickness=7,
     graph_start_angle=90,
@@ -245,7 +245,7 @@ gauge = {
 },
 {
     name='fs_used_perc',           arg='/var/',                     max_value=100,
-    x=100,                          y=850,
+    x=100,                          y=820,
     graph_radius=63,
     graph_thickness=7,
     graph_start_angle=90,
@@ -266,7 +266,7 @@ gauge = {
 },
 {
     name='fs_used_perc',           arg='/',                max_value=100,
-    x=100,                          y=850,
+    x=100,                          y=820,
     graph_radius=53,
     graph_thickness=7,
     graph_start_angle=90,
@@ -287,7 +287,7 @@ gauge = {
 },
 {
     name='fs_used_perc',           arg='/boot/',                max_value=100,
-    x=100,                          y=850,
+    x=100,                          y=820,
     graph_radius=43,
     graph_thickness=7,
     graph_start_angle=90,
@@ -438,7 +438,7 @@ function go_gauge_rings(display)
         value = tonumber(str)
         draw_gauge_ring(display, data, value)
     end
-    
+
     for i in pairs(gauge) do
         load_gauge_rings(display, gauge[i])
     end
@@ -447,22 +447,21 @@ end
 -------------------------------------------------------------------------------
 --                                                                         MAIN
 function conky_main()
-    if conky_window == nil then 
+    if conky_window == nil then
         return
     end
 
     local cs = cairo_xlib_surface_create(conky_window.display, conky_window.drawable, conky_window.visual, conky_window.width, conky_window.height)
     local display = cairo_create(cs)
-    
+
     local updates = conky_parse('${updates}')
     update_num = tonumber(updates)
-    
+
     if update_num > 5 then
         go_gauge_rings(display)
     end
-    
+
     cairo_surface_destroy(cs)
     cairo_destroy(display)
-    return '' 
+    return ''
 end
-

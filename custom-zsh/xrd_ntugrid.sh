@@ -8,9 +8,9 @@
 export REMOTE_SERVER="ntugrid4.phys.ntu.edu.tw"
 export REMOTE_DEFAULT_BASE="/cms/store/user/yichen"
 
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 #  ls with wildcard support
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 function ls_ntugrid() {
    local target=""
    local target_list=""
@@ -29,16 +29,16 @@ function ls_ntugrid() {
             echo "[$target_path]"
             xrdfs $REMOTE_SERVER ls $target_path
             echo ""
-         else 
+         else
             xrdfs $REMOTE_SERVER ls $target_path
          fi
       done
    done
 }
 
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 #  rm remotely with globbing support
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 function rm_ntugrid() {
    local target=""
    local target_path_list=""
@@ -47,26 +47,26 @@ function rm_ntugrid() {
 
    for target in $@ ; do
       target_path_list=( $(expand_xrd_wildcard $target) )
-      for target_path in ${target_path_list[@]} ; do 
+      for target_path in ${target_path_list[@]} ; do
          target_type=$(get_xrd_type $target_path )
-         if [[ $target_type == "DIR" ]]; then ## Is filst 
+         if [[ $target_type == "DIR" ]]; then ## Is filst
             echo "Removing Directory $target_path"
             rmdir_ntugrid $target_path
-         else 
+         else
             echo "Removing file $target_path"
             xrdfs $REMOTE_SERVER rm $target_path
          fi
       done
-   done 
+   done
 }
 
-#--------------------------------------------------------------------------------  
-#  cp with globbing support 
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
+#  cp with globbing support
+#--------------------------------------------------------------------------------
 function cp_ntugrid() {
    local target_list=""
    local local_path=""
-   
+
    if [[ $# -lt 2 ]]; then
       echo "ERROR! At least two arguments required!"
       return false;
@@ -82,7 +82,7 @@ function cp_ntugrid() {
    fi
 
    target_list=${@%$local_path}
-   for target in ${target_list[@]} ; do 
+   for target in ${target_list[@]} ; do
       target_path_list=( ${target_path[@]} $( expand_xrd_wildcard $target ) )
    done
 
@@ -90,17 +90,17 @@ function cp_ntugrid() {
       if [[ $(get_xrd_type $target_path) == "DIR" ]]; then
          #echo "Fetching directory $target_path"
          cpdir_ntugrid $target_path $local_path
-      else 
+      else
          echo "Copying file $target_path to $local_path"
-         xrdcp xroot://$REMOTE_SERVER//$target_path $local_path 
+         xrdcp xroot://$REMOTE_SERVER//$target_path $local_path
       fi
    done
 }
 
 
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 #  Recursively remove all contents from a path
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 function rmdir_ntugrid() {
    # All local variables for recursive calls
    local dir=""
@@ -115,27 +115,27 @@ function rmdir_ntugrid() {
          path_type=$( get_xrd_type $remote_path )
          if [[ $path_type == "DIR" ]]; then
             echo "Decending into $remote_path"
-            rmdir_ntugrid $remote_path 
-         else 
+            rmdir_ntugrid $remote_path
+         else
             echo "[rmdir] Removing file $remote_path"
-            xrdfs $REMOTE_SERVER rm $remote_path 
+            xrdfs $REMOTE_SERVER rm $remote_path
          fi
       done
 
       echo "[rmdir] Removing directory $dir"
       xrdfs $REMOTE_SERVER rmdir $dir
-      
+
    done
 }
 
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 #  cp directory structure to local path
 #  Behaviour definition:
 #      target_dir = /some/remote/path/dir_name
 #      local_path = /some/local/path
-#  Create local directory /some/local/path/dir_name 
+#  Create local directory /some/local/path/dir_name
 #  even if /some/local/path is empty
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 function cpdir_ntugrid() {
    local target_dir=$1
    local local_path=$2
@@ -145,10 +145,10 @@ function cpdir_ntugrid() {
    local target=""
 
 
-   if [[ $target_dir == "" ]]; then return 1; fi 
-   if [[ $local_path == "" ]]; then return 1; fi 
+   if [[ $target_dir == "" ]]; then return 1; fi
+   if [[ $local_path == "" ]]; then return 1; fi
 
-   if check_dir "$local_dir" ; then 
+   if check_dir "$local_dir" ; then
    else
       echo "Failed!"
       return false;
@@ -167,7 +167,7 @@ function cpdir_ntugrid() {
 }
 
 
-#--------------------------------------------------------------------------------  
+#--------------------------------------------------------------------------------
 #  Wildcard functions
 #--------------------------------------------------------------------------------
 function expand_xrd_wildcard() {
@@ -184,7 +184,7 @@ function expand_xrd_wildcard() {
    word_list=( $(wildcard_to_regex $word_list ) )
 
    querylist=( "/" )
-   for word in ${word_list[@]} ; do 
+   for word in ${word_list[@]} ; do
       regex_string="${regex_string}/${word}"
       for query in ${querylist[@]} ; do
          raw_query=$( xrdfs $REMOTE_SERVER ls $query )
@@ -193,7 +193,7 @@ function expand_xrd_wildcard() {
          #echo "[DEBUG][wildcard] query:        $query"
          #echo "[DEBUG][wildcard] raw results:  $raw_query"
          #echo "[DEBUG][wildcard] next list:    ${new_query_items[@]}"
-         nextquerylist=( ${nextquerylist[@]} ${new_query_items[@]} ) 
+         nextquerylist=( ${nextquerylist[@]} ${new_query_items[@]} )
       done
       querylist=( $nextquerylist[@] )
       nextquerylist=""
@@ -222,7 +222,7 @@ function get_xrd_type() {
    result=$(xrdfs $REMOTE_SERVER stat $input_path | grep "IsDir" )
    if [[ $result == "" ]]; then
       echo "FILE"
-   else 
+   else
       echo "DIR"
    fi
 }

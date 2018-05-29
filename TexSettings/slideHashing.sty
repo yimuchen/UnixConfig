@@ -1,34 +1,9 @@
 
 \usepackage{graphicx}
 
-\newcommand{\singleColFrame}[2]{
-\begin{frame}
-\frametitle{#1}
-\begin{columns}
-\begin{column}{0.85\textwidth}
-   #2
-\end{column}
-\end{columns}
-\end{frame}
-}
+\usepackage{xcolor}
 
-\newcommand{\doubleColFrame}[3]{
-\begin{frame}
-\frametitle{#1}
-\begin{columns}
-   \begin{column}{0.45\textwidth}
-      #2
-   \end{column}
-   \begin{column}{0.45\textwidth}
-      #3
-   \end{column}
-\end{columns}
-\end{frame}
-}
-
-\newcommand{\makeList}[2]{
-\textit{#1}
-\begin{itemize}
-#2
-\end{itemize}
+\hypersetup{
+  colorlinks=true,% hyperlinks will be coloured
+  urlcolor=blue
 }

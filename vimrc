@@ -7,7 +7,7 @@
 ""----  Indention settings  ----------------------------------------------------
 set tabstop=3
 set shiftwidth=3
-set expandtab             
+set expandtab
 set smarttab
 set autoindent
 
@@ -65,11 +65,11 @@ set wildignore+=.DS_Store,.git,.hg,.svn
 set wildignore+=*~,*.swp,*.tmp
 
 ""----  Fold settings  ---------------------------------------------------------
-autocmd filetype c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd filetype python setlocal foldmethod=indent
+"autocmd filetype c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
+"autocmd filetype python setlocal foldmethod=indent
 
-autocmd filetype c,cpp  setlocal foldlevelstart=1  "Close all folds for cpp files
-autocmd filetype python setlocal foldlevelstart=2
+""autocmd filetype c,cpp  setlocal foldlevelstart=1  "Close all folds for cpp files
+""autocmd filetype python setlocal foldlevelstart=2
 
 ""----  Vundle settings  -------------------------------------------------------
 set nocompatible
@@ -79,6 +79,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tomasr/molokai'
+"Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 "" Plugin 'Valloric/YouCompleteMe'
@@ -90,16 +91,16 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'bling/vim-airline'
 Plugin 'drmingdrmer/vim-syntax-markdown'
 call vundle#end()
-filetype on 
+filetype on
 filetype plugin on
-filetype indent on 
+filetype indent on
 
 ""----  Molokai settings  ------------------------------------------------------
 syntax on
 set t_Co=256
 colorscheme molokai
 let g:molokai_original=1
-hi Normal ctermbg=none  
+hi Normal ctermbg=none
 
 ""----  YouCompleteMe, UltiSnip with super tab ---------------------------------
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -111,16 +112,16 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " Disable Tex concealing
 let g:tex_conceal = ""
-" Disable YCM auto complete windows 
+" Disable YCM auto complete windows
 set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0 
-" Disable auto syntaz checker 
+let g:ycm_add_preview_to_completeopt = 0
+" Disable auto syntaz checker
 let g:ycm_register_as_syntastic_checker = 0
 
 
 ""----  NERDTree settings  -----------------------------------------------------
-autocmd VimEnter * NERDTree 
-autocmd VimEnter * wincmd p 
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
 nmap <F8> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 1
 
@@ -210,4 +211,3 @@ function! CalWordCount()
 
    exe join(l:cmd, '')
 endfunction
-

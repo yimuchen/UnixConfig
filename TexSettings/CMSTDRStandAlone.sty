@@ -1,0 +1,95 @@
+\usepackage{ifthen}%           Conditionals
+%\tracingonline2
+%\showboxdepth100
+%\showboxbreadth100
+
+% switches to handle document styles: one of these must be specified.
+% pas is the same as as.
+\newboolean{cms@tdr}
+\setboolean{cms@tdr}{false}
+\newboolean{cms@note}
+\setboolean{cms@note}{false}
+\newboolean{cms@an}
+\setboolean{cms@an}{false}
+\newboolean{cms@in}
+\setboolean{cms@in}{false}
+\newboolean{cms@cr}
+\setboolean{cms@cr}{false}
+\newboolean{cms@pas}
+\setboolean{cms@pas}{false}
+\newboolean{cms@dn}
+\setboolean{cms@dn}{false}
+\newboolean{cms@paper}
+\setboolean{cms@paper}{false}
+% indicates final version. remove any draft/internal use markers.
+\newboolean{cms@final}
+\setboolean{cms@final}{false}
+% to use a footnote for the collaboration list
+\newboolean{cms@collab}
+\setboolean{cms@collab}{false}
+%to allow external commands
+\newboolean{cms@external}
+\setboolean{cms@external}{false}
+%to allow for italic formatting
+\newboolean{cms@italic}
+\setboolean{cms@italic}{false}
+% to use formatting for a supplement
+\newboolean{cms@supplement}
+\setboolean{cms@supplement}{false}
+\DeclareOption{tdr}{\setboolean{cms@tdr}{true}\def\cms@style{tdr}} % default anyway
+\DeclareOption{note}{\setboolean{cms@note}{true}\def\cms@style{note}}
+\DeclareOption{cmspaper}{\setboolean{cms@paper}{true}\def\cms@style{paper}}
+\DeclareOption{an}{\setboolean{cms@an}{true}\def\cms@style{an}}
+\DeclareOption{cr}{\setboolean{cms@cr}{true}\def\cms@style{cr}}
+\DeclareOption{in}{\setboolean{cms@in}{true}\def\cms@style{in}}
+\DeclareOption{pas}{\setboolean{cms@pas}{true}\def\cms@style{pas}}
+\DeclareOption{dn}{\setboolean{cms@dn}{true}\def\cms@style{dn}}
+\DeclareOption{final}{\setboolean{cms@final}{true}}
+\DeclareOption{collab}{\setboolean{cms@collab}{true}}
+\DeclareOption{supplement}{\setboolean{cms@supplement}{true}}
+% unknown options are passed on to report class or article class,
+% depending on the cms@tdr switch (its value is known as its option is declared first)
+\DeclareOption*{%
+\ifthenelse{\boolean{cms@tdr}}%
+{\typeout{Using report \CurrentOption\ option}\PassOptionsToClass{\CurrentOption,openright}{report}}%
+{\typeout{Using article \CurrentOption\ option}\PassOptionsToClass{\CurrentOption,titlepage}{article}}%
+{}}
+
+\ProcessOptions\relax
+
+\ifthenelse{\boolean{cms@note}}{\typeout{Using cms note sub-class}}{\typeout{Not using cms note sub-class}}{}
+\ifthenelse{\boolean{cms@tdr}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  General style files
+%  -------------------
+%
+%\usepackage{layout}% for debugging layouts
+%\usepackage{nag} % to remind of obsolete usage
+\usepackage{fancybox}%         e.g. for calling out requirements, etc.
+\usepackage{multicol}%         multiple columns (e.g. glossary)
+\usepackage{longtable}% GOA: added 1 Jun 2007 for Christos
+\usepackage{array}%
+% ... other options for lineno: [pagewise]: renumbers starting each page; [modulo]: prints only every 5th line number
+
+%\usepackage{cite}%
+\providecommand{\citen}[1]{\cite{#1}}%
+
+\usepackage{xspace}%
+\usepackage{multirow}%
+\usepackage{dcolumn} % for aligning columns on decimal: rather picky
+
+\usepackage{amsmath,amssymb}% for advanced math typesetting
+\DeclareMathOperator{\sgn}{sgn}% Declare the sgn operator
+\DeclareMathOperator{\sign}{sign}% for those who insist on sign instead
+\DeclareMathOperator{\erf}{erf}% just missing
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\Arg}{Arg}
+\usepackage{pennames-pazo}% particle names: converted from pennames for mathpazo
+
+
+%%% Loading files from TDR
+\usepackage{ptdr-definitions}

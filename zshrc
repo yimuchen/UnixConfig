@@ -22,6 +22,10 @@ export EDITOR="vim"
 export TABSIZE=2
 export LC_ALL="en_US.UTF-8"
 
+#-----  common functions listing  ------------------------------------------------------------------
+for file in `ls $HOME/.zsh/` ; do
+   source $HOME/.zsh/$file
+done
 
 #-----  Common alias list  -------------------------------------------------------------------------
 alias ln='ln --symbolic --force'
@@ -38,7 +42,7 @@ alias wget='wget --continue'
 alias Make='make clean && make'
 alias astyle='astyle --suffix=none'
 alias tmux="TERM=screen-256color-bce tmux"
-alias ssh='ssh -Y' 
+alias ssh='ssh -Y'
 alias less='less -R'
 
 #-----  Prompt design  -----------------------------------------------------------------------------
@@ -47,8 +51,3 @@ PROMPT=$(print "\
 %{$fg[white]%}┌─ %{$fg[yellow]%}%n %{$fg[red]%}@ %m %{$fg[cyan]%}| %~\n\
 %{$fg[white]%}└───╼   %{$reset_color%}"\
 )
-
-#-----  Common functions listing  ------------------------------------------------------------------
-for FILE in `ls $HOME/.zsh/` ; do 
-   source $HOME/.zsh/$FILE 
-done 

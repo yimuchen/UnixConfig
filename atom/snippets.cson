@@ -1,0 +1,236 @@
+#-------------------------------------------------------------------------------
+#   C/C++
+#-------------------------------------------------------------------------------
+'.source.cpp':
+   'section comment':
+      'prefix':'section comment'
+      'body':"""
+      /*------------------------------------------------------------------------------
+      ${1:Section Name}
+      -------------------------------------------------------------------------------*/
+      $0
+      """
+   'header comment':
+      'prefix':'header comment'
+      'body':"""
+      /**
+       * @file    ${1:filename}
+       * @brief   ${2:brief description of file}
+       * @author  ${3:Yi-Mu "Enoch" Chen (ensc@hep1.phys.ntu.edu.tw)}
+       * ${4:@details Detailed descriptions}
+       */
+      ${0}
+      """
+   'seperator comment':
+      'prefix':'seperator comment'
+      'body':"""
+      /*------------------------------------------------------------------------------*/
+      """
+
+#-------------------------------------------------------------------------------
+#   Python
+#-------------------------------------------------------------------------------
+'.source.python':
+   'section comment':
+      'prefix':'section comment'
+      'body':"""
+      #-------------------------------------------------------------------------------
+      #   ${1:Section Name}
+      #-------------------------------------------------------------------------------
+      """
+   'header comment':
+      'prefix':'header comment'
+      'body':"""
+      #-------------------------------------------------------------------------------
+      #
+      #  Filename    : ${1:File Name}
+      #  Description : ${2:One Line descrption of file contents}
+      #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
+      #
+      #  ${3: Additional comments}
+      #
+      #--------------------------------------------------------------------------------
+      $0
+      """
+
+#-------------------------------------------------------------------------------
+#   Coffee Script (CSON)
+#-------------------------------------------------------------------------------
+'.source.coffee':
+   'section comment':
+      'prefix':'section comment'
+      'body':"""
+      #-------------------------------------------------------------------------------
+      #   ${1:Section Name}
+      #-------------------------------------------------------------------------------
+      $0
+      """
+   'snippet':
+      'prefix':'snippet'
+      'body':"""
+      '${1:Snippet Name}':
+         'prefix':'${1}'
+         'body':\"\"\"
+         $0
+         \"\"\"
+      """
+
+#-------------------------------------------------------------------------------
+#   Latex
+#-------------------------------------------------------------------------------
+'.text.tex':
+   'cms slides':
+      'prefix' : 'cms slides'
+      'body': """
+      %!TeX spellcheck = en-GB
+      %!TEX root = ../${1}.tex
+      \\\\documentclass[10pt]{beamer}
+      \\\\usepackage{slideHashing}
+      \\\\usetheme{CMSSlides}
+
+      \\\\title[]{${1:Status Update}}
+      \\\\author[Enoch Chen (NTU)]{Enoch Chen}
+      \\\\institute[NTU CMS Weekly meeting]{NTU CMS Weekly meeting}
+      \\\\date{\\\\today}
+
+      \\\\begin{document}
+
+      \\\\begin{frame}
+      \\\\maketitle
+      \\\\end{frame}
+
+      \\\\end{document}
+      """
+
+   'homework':
+      'prefix': 'homework'
+      'body':"""
+      \\\\documentclass[12pt, a4paper]{scrartcl}
+      \\\\usepackage{SingleColumn}
+      \\\\usepackage{mathHashing}
+      \\\\usepackage{codeStyle}
+
+      \\\\title{${1:Title}}
+      \\\\author{Enoch Chen, R04222015, Department of Physics}
+      \\\\date{\\\\today}
+
+      \\\\begin{document}
+
+      \\\\maketitle
+
+      ${0:Main content}
+
+      \\\\end{document}
+      """
+
+   'frame':
+      'prefix': 'frame'
+      'body': """
+      \\\\begin{frame}[fragile]
+         \\\\frametitle{$1}
+         $0
+      \\\\end{frame}
+      """
+
+   'equation':
+      'prefix': 'eqnarray'
+      'body':"""
+      \\\\begin{align}
+         $0
+      \\\\end{align}
+      """
+
+   'seperator comment':
+      'prefix': 'seperator comment'
+      'body':"""
+
+      %------------------------------------------------------------------------------%
+
+      """
+
+
+#-------------------------------------------------------------------------------
+#   Markdown (For Jekyll)
+#-------------------------------------------------------------------------------
+'.source.gfm':
+   'once header':
+      'prefix': 'once'
+      'body':"""
+   ---
+   layout: post
+   title: ${1:Title}
+   description: ${2:Short description}
+   tags: [${3:seperate by commas}]
+   modified: ${4:date}
+   image:
+     feature: ${5:thoughts.jpg}
+     credit: ensc
+     creditlink: ${6:image link}
+   ---
+   """
+
+   'figures':
+      'prefix':'figure'
+      'body':"""
+      <figure>
+      	<img src="http://gdriv.es/ensc_github/${1:File in google Doc}"/>
+         <figcaption>${2:caption under }</figcaption>
+      </figure>
+      """
+
+
+#-------------------------------------------------------------------------------
+#   Shell scripts
+#-------------------------------------------------------------------------------
+'.source.shell':
+   'header comment':
+      'prefix':'header comment'
+      'body':"""
+      #-------------------------------------------------------------------------------
+      #
+      #  Filename    : ${1:File Name}
+      #  Description : ${2:One Line descrption of file contents}
+      #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
+      #
+      #  ${3: Additional comments}
+      #
+      #-------------------------------------------------------------------------------
+      $0
+      """
+   'section comment':
+      'prefix':'section comment'
+      'body':"""
+      #-------------------------------------------------------------------------------
+      #   ${1:Section name}
+      #-------------------------------------------------------------------------------
+      ${0}
+      """
+
+
+
+
+#-------------------------------------------------------------------------------
+#   Project snippets
+#-------------------------------------------------------------------------------
+'.source.json':
+   'section comment':
+      'prefix':'section comment'
+      'body':"""
+      \"___Comment___\":\"\"\"-----------------------------------------------------------
+      #    ${1:Section name}
+      -----------------------------------------------------------------------------\"\"\",
+      ${0}
+      """
+   'Add Sample':
+      'prefix':'Add Sample'
+      'body':"""
+      "${1:Sample Name}": {
+         "Latex Name" : "${2: Latex Name}",
+         "Cross Section": [ ${3:Central, up, down}],
+         "Original Sample Size": [ ${4:Total, positive, negative} ],
+         "Sample Weight": [${5:1.0}],
+         "EDM Files":[
+            "${6: List of edm files}"
+         ]
+      }
+      """
