@@ -6,6 +6,7 @@
 #-------------------------------------------------------------------------------
 
 alias crab-setup='source /cvmfs/cms.cern.ch/crab3/crab.sh'
+alias htop='htop --user ${USER}'
 
 smake() {
    num_core=$(nproc)
@@ -14,8 +15,3 @@ smake() {
    scram b -j $run_core
 }
 
-my-cmsenv() {
-   cmsenv
-   export PATH=$HOME/local/bin/:$PATH
-   export LD_LIBRARY_PATH=$HOME/local/lib/:$HOME/local/lib64/:$LD_LIBRARY_PATH
-}
