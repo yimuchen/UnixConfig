@@ -17,6 +17,8 @@ log*
 # Specific file exclusion
 # [relative/path/to/file]
 /vim/bundle/*
+/vim/.ycm_extra_conf.py
+/vim/.netrwhist
 /pylib/__pycache__/*
 
 # Specific file inclusion

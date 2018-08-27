@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/ensc/HomeWork/DSnP/Homework1'
-let g:netrw_dirhist_2='/home/ensc/HomeWork/General Relativity'
-let g:netrw_dirhist_3='scp://ntugrid5///'
-let g:netrw_dirhist_4='scp://ntugrid5///wk_cms/'
-let g:netrw_dirhist_5='scp://ntugrid5///wk_cms/yichen/'

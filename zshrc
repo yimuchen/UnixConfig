@@ -48,6 +48,6 @@ alias less='less -R'
 #-----  Prompt design  -----------------------------------------------------------------------------
 PROMPT=$(print "\
 \n\
-%{$fg[white]%}┌─ %{$fg[yellow]%}%n %{$fg[red]%}@ %m %{$fg[cyan]%}| %~\n\
-%{$fg[white]%}└───╼   %{$reset_color%}"\
+%F{white}┌─ %F{yellow}%n %F{red}@ %m %F{cyan}| %~\n\
+%F{white}└───╼ %{$reset_color%}  "\
 )

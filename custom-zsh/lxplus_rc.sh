@@ -12,13 +12,8 @@ export STOREPATH='/store/yichen'
 
 # Loading common functions
 source ~/.custom-zsh/cmssw.sh
-source ~/.custom-zsh/xrd_ntugrid.sh
-
-# Machine specific aliases
-alias inrne4='ssh inrne4'
 
 unset SSH_ASKPASS ## Disabling gnome
-
 
 # Machine specific functions
 bcheck(){
