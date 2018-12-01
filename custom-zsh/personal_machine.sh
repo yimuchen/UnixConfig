@@ -55,6 +55,10 @@ ntugridvpn() {
   sshuttle --dns -r yichen@ntugrid5  0/0 --exclude=140.112.104.121
 }
 
+umdcmsvpn() {
+  sshuttle --dns -r umdcms 0/0 --exclude=128.8.216.5 --exclude=128.8.216.193
+}
+
 lxplusvpn() {
   machine="";
   ip="";
