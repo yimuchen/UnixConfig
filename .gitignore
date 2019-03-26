@@ -20,6 +20,7 @@ log*
 /vim/.ycm_extra_conf.py
 /vim/.netrwhist
 /pylib/__pycache__/*
+/.vscode/**
 
 # Specific file inclusion
 # ![relative/path/to/file]

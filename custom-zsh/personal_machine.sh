@@ -9,9 +9,7 @@
 export XDG_CONFIG_HOME=$HOME/.fontconf/
 export ROOTSYS=/usr
 export PATH=$PATH:$ROOTSYS/bin
-export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin
-export PATH=$PATH:$HOME/.gem/ruby/2.5.0/bin
-export PATH=$PATH:$HOME/.py_script
+export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
 export PATH=$PATH:/opt/resolve/bin
 export PYTHONPATH=$PYTHONPATH:$HOME/.pylib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
@@ -31,12 +29,10 @@ alias scrcpy='scrcpy -m 800 -b 2M'
 pacupdate(){
   prev=$(date -d "$(cat ~/.update.lock)" +%s)
   now=$(date +%s)
-  if [[ $((now-prev)) -gt $((3600*24*7)) ]]; then
-    echo "Performing system update"
+  if [[ $((now-prev)) -gt $((3600*24*7)) ]]; then    echo "Performing system update"
     yaourt --sync --refresh --sysupgrade -a;
     sudo --preserve-env pacdiffviewer;
-    yaourt --query --unrequired --deps;
-    date "+%Y-%m-%d" > ~/.update.lock
+    yaourt --query --unrequired --deps;    date "+%Y-%m-%d" > ~/.update.lock
   else
     echo "Previous update was at $(cat ~/.update.lock), less than a week ago"
     echo "You can still manually update by explicit yaourt calls"
@@ -44,7 +40,16 @@ pacupdate(){
 }
 
 #-------------------------------------------------------------------------------
-#   Networking test
+#   Single command reboot to windows
+#-------------------------------------------------------------------------------
+winreboot() {
+    local WINDOWS_TITLE=$(sudo grep -i 'windows' /boot/grub/grub.cfg | cut -d"'" -f2)
+    sudo grub-reboot "$WINDOWS_TITLE"
+    sudo reboot
+}
+
+#-------------------------------------------------------------------------------
+#   Networking
 #-------------------------------------------------------------------------------
 ntunode() {
   random=$(od -An -N1 -i < /dev/urandom)
@@ -57,6 +62,19 @@ ntugridvpn() {
 
 umdcmsvpn() {
   sshuttle --dns -r umdcms 0/0 --exclude=128.8.216.5 --exclude=128.8.216.193
+}
+
+lxplus() {
+  # returning random lxplus machine
+  local machine=""
+  local ip=""
+  local random=""
+  while [ -z $ip ] ; do
+    random=$(od -An -N1 -i < /dev/urandom)
+    machine=$(printf "lxplus%03d.cern.ch" $((random%300+1)))
+    ip=$(getent ahosts $machine | grep 'RAW' | awk '{print $1}' )
+  done
+  echo $machine
 }
 
 lxplusvpn() {
@@ -99,3 +117,13 @@ alias playmidi="fluidsynth -l \
   --midi-driver=alsa_seq      \
   --no-shell                  \
   /usr/share/soundfonts/FluidR3_GM.sf2"
+
+## Aliasing functions for processing
+export PATH=$PATH:$HOME/.py_script
+
+## Allowing for autocompletion
+for script_file in $HOME/.py_script/*.py ; do
+   eval "$(register-python-argcomplete ${script_file})"
+done
+
+

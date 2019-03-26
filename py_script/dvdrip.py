@@ -1,4 +1,5 @@
-#!/bin/env python
+#!/bin/env python3
+# PYTHON_ARGCOMPLETE_OK
 #*******************************************************************************
  #
  #  Filename    : dvdrip.py
@@ -7,6 +8,7 @@
  #
 #*******************************************************************************
 import argparse
+import argcomplete
 import subprocess
 import os
 
@@ -33,32 +35,29 @@ parser.add_argument(
     help='Working directory for the operation scripts.'
 )
 
+argcomplete.autocomplete(parser)
+args = parser.parse_args()
 
-def main():
-    args = parser.parse_args()
+outputname = args.output  if args.output.endswith('.iso') else \
+                 args.output + '.iso'
 
-    outputname = args.output  if args.output.endswith('.iso') else args.output + '.iso'
+mkdircmd = ['mkdir', '-p', args.workpath ]
+rmdircmd = ['rm',   '-rf', args.workpath ]
 
-    mkdircmd = ['mkdir', '-p', args.workpath ]
-    rmdircmd = ['rm',   '-rf', args.workpath ]
-
-    backupcmd = ["dvdbackup",
-        "-i" , args.device,
+backupcmd = ["dvdbackup",
+    "-i" , args.device,
         "-o", args.workpath,
         "--mirror",
         "--progress",
         "--name={}".format("temp")
         ]
 
-    makeisocmd = [ "mkisofs",
+makeisocmd = [ "mkisofs",
         "-dvd-video", "-udf",
         "-output", outputname,
         "{}/{}".format(args.workpath, "temp")]
 
-    subprocess.Popen( mkdircmd ).wait()
-    subprocess.Popen( backupcmd ).wait()
-    subprocess.Popen( makeisocmd ).wait()
-    subprocess.Popen( rmdircmd ).wait()
-
-if __name__ == '__main__':
-    main()
+subprocess.Popen( mkdircmd ).wait()
+subprocess.Popen( backupcmd ).wait()
+subprocess.Popen( makeisocmd ).wait()
+subprocess.Popen( rmdircmd ).wait()

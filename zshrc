@@ -16,18 +16,17 @@ bashcompinit
 # End of lines added by compinstall
 # Pre-set programs
 
-
-#-----  Common environment variables  --------------------------------------------------------------
+#-----  Common environment variables  ------------------------------------------
 export EDITOR="vim"
 export TABSIZE=2
 export LC_ALL="en_US.UTF-8"
 
-#-----  common functions listing  ------------------------------------------------------------------
+#-----  common functions listing  ----------------------------------------------
 for file in `ls $HOME/.zsh/` ; do
    source $HOME/.zsh/$file
 done
 
-#-----  Common alias list  -------------------------------------------------------------------------
+#-----  Common alias list ------------------------------------------------------
 alias ln='ln --symbolic --force'
 alias ls='ls --group-directories-first -X --human-readable --color=auto'
 alias grep='grep --colour=always'
@@ -45,7 +44,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias ssh='ssh -Y'
 alias less='less -R'
 
-#-----  Prompt design  -----------------------------------------------------------------------------
+#-----  Prompt design  ---------------------------------------------------------
 PROMPT=$(print "\
 \n\
 %F{white}┌─ %F{yellow}%n %F{red}@ %m %F{cyan}| %~\n\

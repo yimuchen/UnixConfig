@@ -15,5 +15,4 @@ source ~/.custom-zsh/cmssw.sh
 ## Machine specific aliases
 unset SSH_ASKPASS
 
-alias usecms='source /cvmfs/cms.cern.ch/cmsset_default.sh'
 alias wget='wget --no-check-certificate'

@@ -1,4 +1,4 @@
-#-----------------------------  Key binding settings  ------------------------------
+#-----------------------------  Key binding settings  --------------------------
 # to add other keys to this hash, see: man 5 terminfo
 typeset -A key
 

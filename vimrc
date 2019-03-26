@@ -33,6 +33,7 @@ set ruler
 set background=dark
 set mouse=a
 set shell=zsh\ --login
+set paste
 
 ""----  Spell check settings  --------------------------------------------------
 set spell spelllang=en_gb
