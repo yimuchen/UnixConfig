@@ -1,11 +1,11 @@
 #!/bin/env python3
 # PYTHON_ARGCOMPLETE_OK
 #*******************************************************************************
- #
- #  Filename    : dvdrip.py
- #  Description : Simple scripts for ripping a DVD into a standalone .iso file
- #  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
- #
+#
+#  Filename    : dvdrip.py
+#  Description : Simple scripts for ripping a DVD into a standalone .iso file
+#  Author      : Yi-Mu "Enoch" Chen [ ensc@hep1.phys.ntu.edu.tw ]
+#
 #*******************************************************************************
 import argparse
 import argcomplete
@@ -17,47 +17,56 @@ import os
 #-------------------------------------------------------------------------------
 parser = argparse.ArgumentParser(
     prog='dvdrip.py',
-    description = 'Simple scripts for ripping a DVD into a standalone .iso file for documentation'
+    description=
+    'Simple scripts for ripping a DVD into a standalone .iso file for documentation'
 )
 
-parser.add_argument(
-    '-d','--device', type=str, default='/dev/sr0',
-    help='Device of the DVD drive to read the DVD.'
-)
+parser.add_argument('-d',
+                    '--device',
+                    type=str,
+                    default='/dev/sr0',
+                    help='Device of the DVD drive to read the DVD.')
 
 parser.add_argument(
-    '-o','--output', type=str, required=True,
-    help='Output file name, the postfix is .iso will be automatically added.'
-)
+    '-o',
+    '--output',
+    type=str,
+    required=True,
+    help='Output file name, the postfix is .iso will be automatically added.')
 
-parser.add_argument(
-    '-w', '--workpath', type=str, default='{}/.dvd_rip_tmp/'.format(os.environ['HOME']),
-    help='Working directory for the operation scripts.'
-)
+parser.add_argument('-w',
+                    '--workpath',
+                    type=str,
+                    default='{}/.dvd_rip_tmp/'.format(os.environ['HOME']),
+                    help='Working directory for the operation scripts.')
 
 argcomplete.autocomplete(parser)
 args = parser.parse_args()
 
-outputname = args.output  if args.output.endswith('.iso') else \
+outputname = args.output if args.output.endswith('.iso') else \
                  args.output + '.iso'
 
-mkdircmd = ['mkdir', '-p', args.workpath ]
-rmdircmd = ['rm',   '-rf', args.workpath ]
+mkdircmd = ['mkdir', '-p', args.workpath]
+rmdircmd = ['rm', '-rf', args.workpath]
 
-backupcmd = ["dvdbackup",
-    "-i" , args.device,
-        "-o", args.workpath,
-        "--mirror",
-        "--progress",
-        "--name={}".format("temp")
-        ]
+backupcmd = [
+    "dvdbackup",
+    "-i", args.device,
+    "-o", args.workpath,
+    "--mirror",
+    "--progress",
+    "--name={}".format("temp")
+]
 
-makeisocmd = [ "mkisofs",
-        "-dvd-video", "-udf",
-        "-output", outputname,
-        "{}/{}".format(args.workpath, "temp")]
+makeisocmd = [
+    "mkisofs",
+    "-dvd-video",
+    "-udf",
+    "-output", outputname,
+    "{}/{}".format( args.workpath, "temp")
+]
 
-subprocess.Popen( mkdircmd ).wait()
-subprocess.Popen( backupcmd ).wait()
-subprocess.Popen( makeisocmd ).wait()
-subprocess.Popen( rmdircmd ).wait()
+subprocess.Popen(mkdircmd).wait()
+subprocess.Popen(backupcmd).wait()
+subprocess.Popen(makeisocmd).wait()
+subprocess.Popen(rmdircmd).wait()
