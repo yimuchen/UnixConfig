@@ -26,13 +26,18 @@ alias scrcpy='scrcpy -m 800 -b 2M'
 #-------------------------------------------------------------------------------
 #   Machine specific command pack
 #-------------------------------------------------------------------------------
-pacupdate(){
+pacupdate() {
   prev=$(date -d "$(cat ~/.update.lock)" +%s)
   now=$(date +%s)
-  if [[ $((now-prev)) -gt $((3600*24*7)) ]]; then    echo "Performing system update"
-    yaourt --sync --refresh --sysupgrade -a;
-    sudo --preserve-env pacdiffviewer;
-    yaourt --query --unrequired --deps;    date "+%Y-%m-%d" > ~/.update.lock
+  if [[ $((now - prev)) -gt $((3600 * 24 * 7)) ]]; then
+    echo "Performing system update"
+    yay
+    sudo pacdiff
+    removelist=$(yay --query --unrequired --deps --quiet)
+		if [[ $removelist -ne "" ]]; then
+			yay --remove --nosave --recursive $removelist
+		fi
+    date "+%Y-%m-%d" >~/.update.lock
   else
     echo "Previous update was at $(cat ~/.update.lock), less than a week ago"
     echo "You can still manually update by explicit yaourt calls"
@@ -43,21 +48,38 @@ pacupdate(){
 #   Single command reboot to windows
 #-------------------------------------------------------------------------------
 winreboot() {
-    local WINDOWS_TITLE=$(sudo grep -i 'windows' /boot/grub/grub.cfg | cut -d"'" -f2)
-    sudo grub-reboot "$WINDOWS_TITLE"
-    sudo reboot
+  local WINDOWS_TITLE=$(sudo grep -i 'windows' /boot/grub/grub.cfg | cut -d"'" -f2)
+  sudo grub-reboot "$WINDOWS_TITLE"
+  sudo reboot
+}
+
+#-------------------------------------------------------------------------------
+#   Slow restart of Networkmanager
+#-------------------------------------------------------------------------------
+netrestart() {
+  nmcli device disconnect wlp3s0
+  sleep 1s
+  sudo systemctl stop NetworkManager.service
+  sleep 2s
+  sudo modprobe -r rtl8821ae
+  sleep 5s
+  sudo modprobe rtl8821ae
+  sleep 2s
+  sudo systemctl start NetworkManager.service
+  sleep 1s
+  nmcli device connect wlp3s0
 }
 
 #-------------------------------------------------------------------------------
 #   Networking
 #-------------------------------------------------------------------------------
 ntunode() {
-  random=$(od -An -N1 -i < /dev/urandom)
-  printf "ntunode%02d" $((random%20+1))
+  random=$(od -An -N1 -i </dev/urandom)
+  printf "ntunode%02d" $((random % 20 + 1))
 }
 
 ntugridvpn() {
-  sshuttle --dns -r yichen@ntugrid5  0/0 --exclude=140.112.104.121
+  sshuttle --dns -r yichen@ntugrid5 0/0 --exclude=140.112.104.121
 }
 
 umdcmsvpn() {
@@ -67,40 +89,33 @@ umdcmsvpn() {
 lxplus() {
   # returning random lxplus machine
   local machine=""
-  local ip=""
   local random=""
-  while [ -z $ip ] ; do
-    random=$(od -An -N1 -i < /dev/urandom)
-    machine=$(printf "lxplus%03d.cern.ch" $((random%300+1)))
-    ip=$(getent ahosts $machine | grep 'RAW' | awk '{print $1}' )
+  while [ -z $ip ]; do
+    random=$(od -An -N1 -i </dev/urandom)
+    machine=$(printf "lxplus7%02d.cern.ch" $((random % 100 + 1)))
+    if nc -vzw 1 ${machine} 22 2> /dev/null ; then
+      break
+    fi
   done
   echo $machine
 }
 
 lxplusvpn() {
-  machine="";
-  ip="";
-  while [ -z $ip ] ; do
-    random=$(od -An -N1 -i < /dev/urandom)
-    machine=$(printf "lxplus%03d.cern.ch" $((random%300+1)))
-    ip=$(getent ahosts $machine | grep 'RAW' | awk '{print $1}' )
+  local machine=$(lxplus)
+  local ip=$(getent ahost $machine | grep 'RAW' | awk '{print $1}')
+  while [ -z $ip ]; do
+    random=$(od -An -N1 -i </dev/urandom)
+    machine=$(printf "lxplus7%03d.cern.ch" $((random % 100 + 1)))
+    ip=$(getent ahosts $machine | grep 'RAW' | awk '{print $1}')
     echo $machine $ip
   done
   sshuttle -r yichen@$machine 0/0 --exclude=$ip
 }
 
-fixrootpdf() {
-  file=$1
-  gs                         \
-    -sDEVICE=pdfwrite        \
-    -dCompatibilityLevel=1.4 \
-    -dPDFSETTINGS=/screen    \
-    -dNOPAUSE                \
-    -dQUIET                  \
-    -dBATCH                  \
-    -sOutputFile=tmp.pdf     \
-    ${file}
-  mv tmp.pdf ${file}
+pdfremote() {
+  remote=$1
+  scp $1 /tmp
+  zathura /tmp/$(basename $remote)
 }
 
 displayremote() {
@@ -122,8 +137,6 @@ alias playmidi="fluidsynth -l \
 export PATH=$PATH:$HOME/.py_script
 
 ## Allowing for autocompletion
-for script_file in $HOME/.py_script/*.py ; do
-   eval "$(register-python-argcomplete ${script_file})"
+for script_file in $HOME/.py_script/*.py; do
+  eval "$(register-python-argcomplete ${script_file})"
 done
-
-
