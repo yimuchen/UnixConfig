@@ -1,0 +1,138 @@
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\newcommand*{\defanchor}[4]{
+    \savedanchor{#2}{
+        \pgf@x=#3\wd\pgfnodeparttextbox
+        \pgf@y=#4\ht\pgfnodeparttextbox
+    }
+    \anchor{#1}{#2}
+}
+\pgfdeclareshape{simple1dplot}{\inheritsavedanchors[from=rectangle]
+    \inheritanchorborder[from=rectangle]
+    \inheritanchor[from=rectangle]{north}
+    \inheritanchor[from=rectangle]{north west}
+    \inheritanchor[from=rectangle]{north east}
+    \inheritanchor[from=rectangle]{center}
+    \inheritanchor[from=rectangle]{west}
+    \inheritanchor[from=rectangle]{east}
+    \inheritanchor[from=rectangle]{mid}
+    \inheritanchor[from=rectangle]{mid west}
+    \inheritanchor[from=rectangle]{mid east}
+    \inheritanchor[from=rectangle]{base}
+    \inheritanchor[from=rectangle]{base west}
+    \inheritanchor[from=rectangle]{base east}
+    \inheritanchor[from=rectangle]{south}
+    \inheritanchor[from=rectangle]{south west}
+    \inheritanchor[from=rectangle]{south east}
+    \inheritbackgroundpath[from=rectangle]
+
+    \defanchor{outer left top}{\olt}{0.025}{0.942}
+    \defanchor{outer left bottom}{\olb}{0.025}{0.10}
+    \defanchor{outer right top}{\ort}{0.995}{0.942}
+    \defanchor{outer right bottom}{\orb}{0.995}{0.10}
+    \defanchor{outer top left}{\otl}{.129}{.985}
+    \defanchor{outer top right}{\otr}{.972}{.985}
+    \defanchor{outer bottom left}{\obl}{.129}{.03}
+    \defanchor{outer bottom right}{\obr}{.972}{.03}
+
+    \defanchor{frame south west}{\fsw}{.129}{.10}
+    \defanchor{frame south east}{\fse}{.972}{.10}
+    \defanchor{frame north west}{\fnw}{.129}{.942}
+    \defanchor{frame north east}{\fne}{.972}{.942}
+
+    \defanchor{inner south west}{\isw}{.165}{.135}
+    \defanchor{inner south east}{\ise}{.937}{.135}
+    \defanchor{inner north west}{\inw}{.165}{.907}
+    \defanchor{inner north east}{\ine}{.937}{.907}
+}
+
+\pgfdeclareshape{ratio1dplot}{\inheritsavedanchors[from=rectangle]
+    \inheritanchorborder[from=rectangle]
+    \inheritanchor[from=rectangle]{north}
+    \inheritanchor[from=rectangle]{north west}
+    \inheritanchor[from=rectangle]{north east}
+    \inheritanchor[from=rectangle]{center}
+    \inheritanchor[from=rectangle]{west}
+    \inheritanchor[from=rectangle]{east}
+    \inheritanchor[from=rectangle]{mid}
+    \inheritanchor[from=rectangle]{mid west}
+    \inheritanchor[from=rectangle]{mid east}
+    \inheritanchor[from=rectangle]{base}
+    \inheritanchor[from=rectangle]{base west}
+    \inheritanchor[from=rectangle]{base east}
+    \inheritanchor[from=rectangle]{south}
+    \inheritanchor[from=rectangle]{south west}
+    \inheritanchor[from=rectangle]{south east}
+    \inheritbackgroundpath[from=rectangle]
+
+    \defanchor{outer left top}{\olt}{.025}{.937}
+    \defanchor{outer left bottom}{\olb}{.025}{.085}
+    \defanchor{outer right top}{\ort}{.998}{.937}
+    \defanchor{outer right bottom}{\orb}{.998}{.085}
+    \defanchor{outer top left}{\otl}{.17}{.985}
+    \defanchor{outer top right}{\otr}{.972}{.985}
+    \defanchor{outer bottom left}{\obl}{.17}{.02}
+    \defanchor{outer bottom right}{\obr}{.972}{.02}
+    \defanchor{outer gap left}{\ogl}{.025}{.2975}
+    \defanchor{outer gap right}{\ogr}{.998}{.2975}
+
+    \defanchor{tframe south west}{\tfsw}{.17}{.30}
+    \defanchor{tframe south east}{\tfse}{.972}{.30}
+    \defanchor{tframe north west}{\tfnw}{.17}{.937}
+    \defanchor{tframe north east}{\tfne}{.972}{.937}
+    \defanchor{tinner south west}{\tisw}{.205}{.32}
+    \defanchor{tinner south east}{\tise}{.94}{.32}
+    \defanchor{tinner north west}{\tinw}{.205}{.915}
+    \defanchor{tinner north east}{\tine}{.94}{.915}
+
+    \defanchor{bframe south west}{\bfsw}{.17}{.085}
+    \defanchor{bframe south east}{\bfse}{.972}{.085}
+    \defanchor{bframe north west}{\bfnw}{.17}{.295}
+    \defanchor{bframe north east}{\bfne}{.972}{.295}
+    \defanchor{binner south west}{\bisw}{.205}{.10}
+    \defanchor{binner south east}{\bise}{.94}{.10}
+    \defanchor{binner north west}{\binw}{.205}{.28}
+    \defanchor{binner north east}{\bine}{.94}{.28}
+}
+
+
+%Commands for adding a simple 1d plot
+\newcommand*{\addsimplot}[3][scale=1]{
+  \node[simple1dplot](#2) {\includegraphics[#1]{#3}};
+  \pgfpointdiff{\pgfpointanchor{#2}{frame south west}}
+               {\pgfpointanchor{#2}{frame north east}}
+  \pgfmathsetmacro\framex{\csname pgf@x\endcsname}
+  \pgfmathsetmacro\framey{\csname pgf@y\endcsname}
+}
+
+\newcommand*{\simplotdata}[4]{
+  \pgfpointdiff{\pgfpointanchor{#1}{frame south west}}
+               {\pgfpointanchor{#1}{frame north east}}
+  \pgfmathsetmacro\framex{\csname pgf@x\endcsname}
+  \pgfmathsetmacro\framey{\csname pgf@y\endcsname}
+  \coordinate (#2) at ($(#1.frame south west)+(#3*\framex pt, #4*\framey pt)$) ;
+}
+
+\newcommand*{\addratioplot}[3][scale=1]{
+  \node[ratio1dplot](#2){\includegraphics[#1]{#3}};
+}
+
+\newcommand*{\ratiotdata}[4]{
+  \pgfpointdiff{\pgfpointanchor{#1}{tframe south west}}
+               {\pgfpointanchor{#1}{tframe north east}}
+  \pgfmathsetmacro\framex{\csname pgf@x\endcsname}
+  \pgfmathsetmacro\framey{\csname pgf@y\endcsname}
+  \coordinate (#2) at ($(#1.tframe south west)+(#3*\framex pt, #4*\framey pt)$) ;
+}
+
+\newcommand*{\ratiobdata}[4]{
+  \pgfpointdiff{\pgfpointanchor{#1}{bframe south west}}
+               {\pgfpointanchor{#1}{bframe north east}}
+  \pgfmathsetmacro\framex{\csname pgf@x\endcsname}
+  \pgfmathsetmacro\framey{\csname pgf@y\endcsname}
+  \coordinate (#2) at ($(#1.bframe south west)+(#3*\framex pt, #4*\framey pt)$) ;
+}
+
+%% Cleaning up
+\let\defanchor\undefine %% defanchor shouldn't be used outside of the package
