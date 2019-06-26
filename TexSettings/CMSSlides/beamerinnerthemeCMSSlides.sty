@@ -1,7 +1,37 @@
 \mode<presentation>
 
-\setbeamersize{text margin left=40pt,text margin right=40pt}
+\setbeamersize{text margin left=0.8cm}
+\setbeamersize{text margin right=0.8cm}
 
-\usefonttheme{professionalfonts}
+%% Font settings
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usepackage{fontspec}
+\usepackage{unicode-math} % Must be placed here before any font settings
+\setmainfont{Linux Libertine O}
+\setsansfont{Nimbus Sans}
+\setmonofont[Scale=MatchLowercase]{Linux Libertine Mono}
+
+% Use latin modern for math symbols
+\setmathfont{XITS Math} % Using latin modern symbols by default
+
+% Fall back to main font for latin and numerical characters
+\setmathfont[range=\mathit/{latin,Latin,num}]{Linux Libertine O Italic}
+\setmathfont[range=\mathup/{latin,Latin,num}]{Linux Libertine O}
+\setmathfont[range=\mathbfup/{latin,Latin,num}]{Linux Libertine O Bold}
+\setmathfont[range=\mathbfit/{latin,Latin,num}]{Linux Libertine O Bold Italic}
+
+% Additional character
+\setmathfont[range={"221E}]{Linux Libertine O}% "0221E = \infty
+
+
+%% Beamer font fixed to not change
+\setbeamertemplate{itemize/enumerate body begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\normalsize}
+
+%% Changing the Bulletin style
+\setbeamertemplate{itemize item}{\tiny\raise2.0pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\tiny\raise2.0pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise2.0pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
 
 \mode<all>

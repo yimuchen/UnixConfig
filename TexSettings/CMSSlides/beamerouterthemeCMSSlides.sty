@@ -1,69 +1,70 @@
 \mode<presentation>
+\usetikzlibrary{calc}
 
-%------------------------------------------------------------------------------- 
+
+
+%-------------------------------------------------------------------------------
 %   Title page settings
 %-------------------------------------------------------------------------------
 \defbeamertemplate*{title page}{CMSSlides}[1][]
 {
    \vskip3cm
-   \hspace{-25mm}\begin{tikzpicture}
-      \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,1.0);
-      \fill[secondary] (-2,0) rectangle( 11 , 0.04 );
-      \fill[secondary] (6.5,0) -- ( 7.5 , 0.5 ) -- ( 11.5 , 0.5 ) -- ( 11.5 , 0 ) -- ( 7 , 0 ) ;
-      \node[anchor=west] at ( 9.0 , 0.48 ) {\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/CMS}};%
-      \node[anchor=west] at ( 8.0 , 0.48 ) {\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/UMD}};%
+   \begin{beamercolorbox}[wd=\paperwidth,ht=2cm]{frametitle}
+   \begin{tikzpicture}
+      \node (rightedge) at (\the\paperwidth,0) {};
+      \useasboundingbox[fill=primary](0,0.04) rectangle ($(rightedge)+(0,1.4)$);
+      \node[anchor=east] at ($(rightedge)+(0,0.7)$){\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/CMS}};%
+      \node[anchor=east] at ($(rightedge)+(-1.05,0.7)$){\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/UMD}};
+      \node[anchor=west,white,font=\bfseries\Large] at (1,0.7){\inserttitle};
    \end{tikzpicture}
 
-   \vskip-0.75cm
-   \begin{beamercolorbox}[wd=15cm,leftskip=0.7cm,sep=8pt,#1]{title}
-      \usebeamerfont{title}\inserttitle\par%
-   \end{beamercolorbox}%
-   
+   \end{beamercolorbox}
+
    \vskip0.75cm%
-   \begin{beamercolorbox}[rightskip=1.0cm,#1]{institute}
-      \flushright \insertinstitute
+   \begin{beamercolorbox}[wd=\the\paperwidth,rightskip=-1.0cm,#1]{titleinstitute}
+      \flushright \insertinstitute\hspace{1cm}
    \end{beamercolorbox}
    \vskip-0.3cm
-   \begin{beamercolorbox}[leftskip=3cm,#1]{author}
-      \flushright \insertauthor
+   \begin{beamercolorbox}[wd=\the\paperwidth,rightskip=1.0cm,#1]{titleauthor}
+      \flushright \insertauthor\hspace{1cm}
    \end{beamercolorbox}
    \vskip-0.3cm
-   \begin{beamercolorbox}[leftskip=3cm,#1]{date}
-      \flushright \insertdate
-   \end{beamercolorbox} 
+   \begin{beamercolorbox}[wd=\the\paperwidth,rightskip=1.0cm,#1]{titledate}
+      \flushright \insertdate\hspace{1cm}
+   \end{beamercolorbox}
    \vfill
 }
 
-%------------------------------------------------------------------------------- 
+%-------------------------------------------------------------------------------
 %   Frame with title
 %-------------------------------------------------------------------------------
 \defbeamertemplate*{frametitle}{CMSSlides}[1][]
 {
    \vskip0.5cm%
-   \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+   \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle}
       \begin{tikzpicture}
-         \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,1.2);
+         \node (rightedge) at (\the\paperwidth,0) {};
+         \useasboundingbox[fill=white](0,0) rectangle ($(rightedge)+(0,1.2)$);
 
-         \fill[secondary] ( 10.2 , 0) rectangle(\the\paperwidth,1.2);
-         \fill[primary]   (0,0) rectangle( 10.15 ,1.2);
+         \fill[secondary] (rightedge) rectangle ($(rightedge)+(-2.30,1.2)$);
+         \fill[primary]   (0,0) rectangle ($(rightedge)+(-2.35,1.2)$);
          \ifx\insertframesubtitle\@empty%
-            {\node[anchor=west, white,font=\large] at (0.3,0.61){\insertframetitle};}
+            {\node[anchor=west,white,font=\bfseries\large] at (0.3,0.60){\insertframetitle};}
          \else%
             {\node[anchor= west, white,font=\large] at (0.3,0.75){\insertframetitle};%
             \node[anchor= west, white,font=\small] at (0.3,0.35){\insertframesubtitle};}%
          \fi
-         
-         \node[anchor=west] at ( 10.3 , 0.6 ) {\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/NTU}};%
-         \node[anchor=west] at ( 11.5 , 0.6 ) {\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/CMS}};%
-         
+
+         \node[anchor=east] at ($(rightedge)+(-0.0,0.6)$) {\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/CMS}};%
+         \node[anchor=east] at ($(rightedge)+(-1.05,0.6)$) {\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/UMD}};%
       \end{tikzpicture}
    \end{beamercolorbox}
 }
 
-
+%% Beginning of new section
 \AtBeginSection[]{
 \begin{frame}
-   \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+   \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle}
       \begin{tikzpicture}
          \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,1.2);
          \fill[secondary] ( 10.2 , 0) rectangle(\the\paperwidth,1.2);
