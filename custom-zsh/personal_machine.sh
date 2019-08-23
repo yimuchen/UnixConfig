@@ -22,7 +22,7 @@ source $HOME/.custom-zsh/tdr_settings.sh
 alias optirun="LD_PRELOAD=\"libpthread.so.0 libGL.so.1\" __GL_THREADED_OPTIMIZATIONS=1 optirun"
 alias gphoto2='gphoto2 --port usb:'
 alias scrcpy='scrcpy -m 800 -b 2M'
-
+alias cura='env -u DESKTOP_SESSION -u KDE_FULL_SESSION -u XDG_CURRENT_DESKTOP cura'
 #-------------------------------------------------------------------------------
 #   Machine specific command pack
 #-------------------------------------------------------------------------------
@@ -33,10 +33,7 @@ pacupdate() {
     echo "Performing system update"
     yay
     sudo pacdiff
-    removelist=$(yay --query --unrequired --deps --quiet)
-		if [[ $removelist -ne "" ]]; then
-			yay --remove --nosave --recursive $removelist
-		fi
+    yay --query --unrequired --deps --quiet | yay --remove --nosave --recursive -
     date "+%Y-%m-%d" >~/.update.lock
   else
     echo "Previous update was at $(cat ~/.update.lock), less than a week ago"
