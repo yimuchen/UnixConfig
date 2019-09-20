@@ -12,7 +12,7 @@ align_closing_bracket_with_visual_indent=True
 allow_multiline_dictionary_keys=False
 
 # Allow lambdas to be formatted on more than one line.
-allow_multiline_lambdas=False
+allow_multiline_lambdas=True
 
 # Allow splitting before a default / named assignment in an argument list.
 allow_split_before_default_or_named_assigns=True
@@ -119,7 +119,7 @@ dedent_closing_brackets=False
 
 # Disable the heuristic which places each list element on a separate line
 # if the list is comma-terminated.
-disable_ending_comma_heuristic=False
+disable_ending_comma_heuristic=True
 
 # Place each dictionary entry onto its own line.
 each_dict_entry_on_separate_line=True
@@ -218,7 +218,7 @@ split_all_comma_separated_values=False
 
 # Split before arguments if the argument list is terminated by a
 # comma.
-split_arguments_when_comma_terminated=False
+split_arguments_when_comma_terminated=True
 
 # Set to True to prefer splitting before '&', '|' or '^' rather than
 # after.
