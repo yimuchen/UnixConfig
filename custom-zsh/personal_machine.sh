@@ -68,6 +68,14 @@ netrestart() {
 }
 
 #-------------------------------------------------------------------------------
+#   Conky restart
+#-------------------------------------------------------------------------------
+conkrestart() {
+	pkill conky 2> /dev/null 
+	conky -c ~/.Conky_config/conkyrc.lua 2> /dev/null
+}
+
+#-------------------------------------------------------------------------------
 #   Networking
 #-------------------------------------------------------------------------------
 ntunode() {
@@ -121,6 +129,13 @@ displayremote() {
   display /tmp/$(basename $remote)
 }
 
+rootremote() {
+  remote=$1 
+  scp $remote /tmp 
+  root /tmp/$(basename $remote)
+}
+
+
 #-------------------------------------------------------------------------------
 #   Midi playback aliases
 #-------------------------------------------------------------------------------
@@ -137,3 +152,10 @@ export PATH=$PATH:$HOME/.py_script
 for script_file in $HOME/.py_script/*.py; do
   eval "$(register-python-argcomplete ${script_file})"
 done
+
+#-------------------------------------------------------------------------------
+#   Geant4 Stuff 
+#-------------------------------------------------------------------------------
+export G4ENSDFSTATEDATA=/usr/share/geant4-ensdfstatedata/G4ENSDFSTATE2.2/
+export G4REALSURFACEDATA=/usr/share/geant4-realsurfacedata/RealSurface2.1.1/
+export G4LEDATA=/usr/share/geant4-ledata/G4EMLOW7.7/
