@@ -14,6 +14,7 @@ export PATH=$PATH:/opt/resolve/bin
 export PYTHONPATH=$PYTHONPATH:$HOME/.pylib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
 export TDR_DIR=$HOME/HomeWork/CMS-Group/TDRMaster
+export XDG_CONFIG_HOME=/home/ensc/.config # KDE command line themeing
 
 # Importing common functions
 source $HOME/.custom-zsh/tdr_settings.sh
