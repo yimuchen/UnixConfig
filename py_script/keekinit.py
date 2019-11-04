@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     '--database','-d',
     type=str,
-    default='/home/ensc/.ssh/Database.kdbx',
+    default='/home/ensc/ArchConfig/AppConfig/Database.kdbx',
     help='Keepass database file that we are going to search for entries'
 )
 
