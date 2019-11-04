@@ -104,9 +104,9 @@ ${font Noto Sans:size=11}${goto 420}Read:${diskio_read /dev/sdb}  Write:${diskio
 
 ${voffset 90}
 ${goto 110}${font Noto Sans:size=28:style=bold}${color}NET${voffset -8}${color5}${hr 1}${font Noto Sans:12}
-${goto 210}${voffset -51}${downspeedgraph enp4s0f1 28,200 0000AA  AABBFF}${goto 420}${downspeedgraph wlp3s0 28,200 0000AA AABBFF}
-${goto 210}${voffset -8}${upspeedgraph enp4s0f1 -28,200 0000AA  AABBFF}${goto 420}${upspeedgraph wlp3s0 -28,200 0000AA AABBFF}${color1}
+${goto 210}${voffset -51}${downspeedgraph enp4s0f1 28,200 0000AA AABBFF}${goto 210}${downspeedgraph enp0s20u3 28,200 0000AA AABBFF}${goto 420}${downspeedgraph wlp3s0 28,200 0000AA AABBFF}
+${goto 210}${voffset -8}${upspeedgraph enp4s0f1 -28,200 0000AA  AABBFF}${goto 210}${upspeedgraph enp0s20u3 -28,200 0000AA AABBFF}${goto 420}${upspeedgraph wlp3s0 -28,200 0000AA AABBFF}${color1}
 ${voffset 5}${goto 210} Ethernet: ${goto 420}Wifi: ${if_up wlp3s0}${wireless_essid wlp3s0} (${wireless_link_qual wlp3s0}/${wireless_link_qual_max wlp3s0})${endif}
-${goto 210}${addr enp4s0f1}${goto 420}${addr wlp3s0}
-${goto 210}${downspeed enp4s0f1} / ${upspeed enp4s0f1}${goto 420}${downspeed wlp3s0} / ${upspeed wlp3s0}
+${goto 210}${addr enp4s0f1}(${addr enp0s20u3})${goto 420}${addr wlp3s0}
+${goto 210}${downspeed enp4s0f1}/${upspeed enp4s0f1} (${downspeed enp0s20u3}/${upspeed enp0s20u3})${goto 420}${downspeed wlp3s0}/${upspeed wlp3s0}
 ]]
