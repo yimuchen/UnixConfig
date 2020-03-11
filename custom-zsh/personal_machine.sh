@@ -6,7 +6,6 @@
 #-------------------------------------------------------------------------------
 
 # Machine specific variables
-export XDG_CONFIG_HOME=$HOME/.fontconf/
 export ROOTSYS=/usr
 export PATH=$PATH:$ROOTSYS/bin
 export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
@@ -20,7 +19,6 @@ export XDG_CONFIG_HOME=/home/ensc/.config # KDE command line themeing
 source $HOME/.custom-zsh/tdr_settings.sh
 
 # Machine specific alias
-alias optirun="LD_PRELOAD=\"libpthread.so.0 libGL.so.1\" __GL_THREADED_OPTIMIZATIONS=1 optirun"
 alias gphoto2='gphoto2 --port usb:'
 alias scrcpy='scrcpy -m 800 -b 2M'
 alias cura='env -u DESKTOP_SESSION -u KDE_FULL_SESSION -u XDG_CURRENT_DESKTOP cura'
@@ -28,8 +26,8 @@ alias cura='env -u DESKTOP_SESSION -u KDE_FULL_SESSION -u XDG_CURRENT_DESKTOP cu
 #   Machine specific command pack
 #-------------------------------------------------------------------------------
 pacupdate() {
-  prev=$(date -d "$(cat ~/.update.lock)" +%s)
-  now=$(date +%s)
+  local prev=$(date -d "$(cat ~/.update.lock)" +%s)
+  local now=$(date +%s)
   if [[ $((now - prev)) -gt $((3600 * 24 * 7)) ]]; then
     echo "Performing system update"
     yay
@@ -72,7 +70,7 @@ netrestart() {
 #   Conky restart
 #-------------------------------------------------------------------------------
 conkrestart() {
-	pkill conky 2> /dev/null 
+	pkill conky 2> /dev/null
 	conky -c ~/.Conky_config/conkyrc.lua 2> /dev/null
 }
 
@@ -118,24 +116,22 @@ lxplusvpn() {
   sshuttle -r yichen@$machine 0/0 --exclude=$ip
 }
 
-pdfremote() {
-  remote=$1
-  scp $1 /tmp
-  zathura /tmp/$(basename $remote)
+openremote() {
+  local program=$1
+  local remotefile=$2
+  scp $remotefile /tmp
+  $program /tmp/$(basename $remotefile)
 }
 
-displayremote() {
-  remote=$1
-  scp $remote /tmp
-  display /tmp/$(basename $remote)
-}
+alias pdfremote='openremote zathura'
+alias displayremote='openremote display'
+alias rootremote='openremote root'
 
-rootremote() {
-  remote=$1 
-  scp $remote /tmp 
-  root /tmp/$(basename $remote)
+rankpac() {
+  curl --silent "https://www.archlinux.org/mirrorlist/all/https/" | \
+  sed --expression='s/^#Server/Server/' --expression='/^#/d'      | \
+  rankmirrors -n 10 --verbose -
 }
-
 
 #-------------------------------------------------------------------------------
 #   Midi playback aliases
@@ -155,8 +151,14 @@ for script_file in $HOME/.py_script/*.py; do
 done
 
 #-------------------------------------------------------------------------------
-#   Geant4 Stuff 
+#   Geant4 Stuff
 #-------------------------------------------------------------------------------
 export G4ENSDFSTATEDATA=/usr/share/geant4-ensdfstatedata/G4ENSDFSTATE2.2/
 export G4REALSURFACEDATA=/usr/share/geant4-realsurfacedata/RealSurface2.1.1/
 export G4LEDATA=/usr/share/geant4-ledata/G4EMLOW7.7/
+export G4LEVELGAMMADATA=/usr/share/geant4-levelgammadata/PhotonEvaporation5.5/
+export G4PARTICLEXSDATA=/usr/share/geant4-particlexsdata/G4PARTICLEXS2.1/
+export G4INSTALL=/usr/share/Geant4-10.6.0/geant4make/
+export G4TMP=/tmp/
+export G4TMPDIR=/tmp/
+export G4TMPDIR=/tmp/

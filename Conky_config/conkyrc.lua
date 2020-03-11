@@ -32,7 +32,7 @@ conky.config = {
 	color5 = '#00AAFF',
 	text_buffer_size = 65536,
 	top_name_width = 32,
-	update_interval = 1,
+	update_interval = 0.5,
 
 	lua_load = '~/.Conky_config/gauges.lua',
 
