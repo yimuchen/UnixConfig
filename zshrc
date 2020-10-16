@@ -47,8 +47,8 @@ alias less='less -R'
 #-----  Prompt design  ---------------------------------------------------------
 PROMPT=$(print "\
 \n\
-%F{white}┌─ %F{yellow}%n %F{red}@ %m %F{cyan}| %~ %F{white}[%D{%y/%m/%f} %D{%L:%M:%S}]\n\
-%F{white}└───╼ %{$reset_color%}  "\
+%F{white}┌─ %f%F{yellow}%n %f%F{red}@ %m %f%F{cyan}| %~ %f%F{white}[%D{%y/%m/%f} %D{%L:%M:%S}]%f\n\
+%F{white}└───╼ %f%{$reset_color%}  "\
 )
 
 #----- Time Command formatting -------------------------------------------------

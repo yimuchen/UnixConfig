@@ -43,6 +43,8 @@ for file in args.filelist:
   relpath = file.replace(args.localbase, '')
   reldir = os.path.dirname(relpath)
 
+  print( file, relpath, args.localbase, )
+
   if args.deploy:
     subprocess.call([
         'ssh', args.remotehost, 'mkdir', '-p', '{}/{}'.format(
@@ -53,3 +55,5 @@ for file in args.filelist:
         'scp', file, '{}:{}/{}'.format(args.remotehost, args.remotebase, relpath)
     ],
                     env={'KRB5CCNAME': args.kerberos})
+
+# input('Press Enter to continue')

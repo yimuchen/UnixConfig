@@ -133,6 +133,10 @@ rankpac() {
   rankmirrors -n 10 --verbose -
 }
 
+function set_kerberos() {
+  export KRB5CCNAME=/tmp/kerberos_${UID}_${1}
+}
+
 #-------------------------------------------------------------------------------
 #   Midi playback aliases
 #-------------------------------------------------------------------------------
@@ -155,10 +159,29 @@ done
 #-------------------------------------------------------------------------------
 export G4ENSDFSTATEDATA=/usr/share/geant4-ensdfstatedata/G4ENSDFSTATE2.2/
 export G4REALSURFACEDATA=/usr/share/geant4-realsurfacedata/RealSurface2.1.1/
-export G4LEDATA=/usr/share/geant4-ledata/G4EMLOW7.7/
+export G4LEDATA=/usr/share/geant4-ledata/G4EMLOW7.9/
 export G4LEVELGAMMADATA=/usr/share/geant4-levelgammadata/PhotonEvaporation5.5/
 export G4PARTICLEXSDATA=/usr/share/geant4-particlexsdata/G4PARTICLEXS2.1/
 export G4INSTALL=/usr/share/Geant4-10.6.0/geant4make/
 export G4TMP=/tmp/
 export G4TMPDIR=/tmp/
 export G4TMPDIR=/tmp/
+
+
+#-------------------------------------------------------------------------------
+#   Starting local cvmfs session in docker
+#   Reference: https://github.com/aperloff/cms-cvmfs-docker
+#-------------------------------------------------------------------------------
+## Must use ALIAS, other wise the interface prompt doesnt show up
+alias run_cvmfs='
+  sudo docker run  --interactive --tty \
+                   --publish-all \
+                   --device /dev/fuse \
+                   --cap-add SYS_ADMIN \
+                   --env CVMFS_MOUNTS="cms.cern.ch oasis.opensciencegrid.org" \
+                   --env DISPLAY=host.docker.internal:0 \
+                   --env MY_UID=$(id -u) \
+                   --env MY_GID=$(id -g) \
+                   --volume "$HOME/Homework/CMSSW:/home/cmsuser/UserCode" \
+                   aperloff/cms-cvmfs-docker:latest
+'
