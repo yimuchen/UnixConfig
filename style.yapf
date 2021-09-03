@@ -97,7 +97,7 @@ column_limit=81
 continuation_align_style=SPACE
 
 # Indent width used for line continuations.
-continuation_indent_width=4
+continuation_indent_width=2
 
 # Put closing brackets on a separate line, dedented, if the bracketed
 # expression can't fit in a single line. Applies to all kinds of brackets,

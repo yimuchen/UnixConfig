@@ -9,7 +9,7 @@ import errno
 from pykeepass import PyKeePass
 
 parser = argparse.ArgumentParser(
-    'Starting a kerbose session with password stored in keepass database',
+    'Starting kerbose tickets using credentials stored in keepass database',
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 parser.add_argument(
@@ -23,27 +23,27 @@ parser.add_argument(
     '-s',
     type=str,
     nargs='+',
-    default=['FNAL','CERN'],
-    help='Entries in keepass database to use for kerberos identity' )
+    default=['FNAL', 'CERN'],
+    help='Entries in keepass database to use for kerberos identity')
 parser.add_argument(
     '--default',
     type=str,
     default='FNAL',
-    help='Which kerberos identity to link to default kerberos cache' )
+    help='Which kerberos identity to link to default kerberos cache')
 
 argcomplete.autocomplete(parser)
 args = parser.parse_args()
 
 kp = []
 try:
-    kp = PyKeePass(args.database,
-               password=getpass.getpass('Data base master password: '))
+  kp = PyKeePass(args.database,
+                 password=getpass.getpass('Data base master password: '))
 except:
-    print("Error opening database file")
-    sys.exit(1)
-group = kp.find_groups(name='Internet', first=True)
+  print("Error opening database file")
+  sys.exit(1)
+#group = kp.find_groups(name='Internet', first=True)
 
-kerberos_default='/tmp/krb5cc_{}'.format( os.geteuid() )
+kerberos_default = '/tmp/krb5cc_{}'.format(os.geteuid())
 
 for domain in args.sites:
   entry = kp.find_entries(title=domain, first=True)
@@ -52,27 +52,26 @@ for domain in args.sites:
 
   ## Running the Kinit command
 
-  identity = '{}@{}'.format(entry.username,url)
-  kerberos_file = '/tmp/kerberos_{}_{}'.format( os.geteuid(), domain )
+  identity = '{}@{}'.format(entry.username, url)
+  kerberos_file = '/tmp/kerberos_{}_{}'.format(os.geteuid(), domain)
 
-  print( 'Generating for identity [{0}]...'.format(identity), end='' )
+  print('Generating for identity [{0}]...'.format(identity), end='')
 
-  subprocess.run([
-    '/usr/bin/kinit', identity, '-c', kerberos_file ],
-    input=entry.password,
-    encoding='ascii',
-    stdout=subprocess.DEVNULL,
-    stderr=subprocess.DEVNULL)
+  subprocess.run(['/usr/bin/kinit', identity, '-c', kerberos_file],
+                 input=entry.password,
+                 encoding='ascii',
+                 stdout=subprocess.DEVNULL,
+                 stderr=subprocess.DEVNULL)
 
   # Linking site to default
   if domain == args.default:
-    print( 'Linking to default cache...', end='')
+    print('Linking to default cache...', end='')
     try:
-        os.symlink(kerberos_file, kerberos_default)
+      os.symlink(kerberos_file, kerberos_default)
     except OSError as e:
-        if e.errno == errno.EEXIST:
-            os.remove(kerberos_default)
-            os.symlink(kerberos_file, kerberos_default)
-        else:
-            raise e
+      if e.errno == errno.EEXIST:
+        os.remove(kerberos_default)
+        os.symlink(kerberos_file, kerberos_default)
+      else:
+        raise e
   print('Done!')

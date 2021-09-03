@@ -8,26 +8,25 @@ parser = argparse.ArgumentParser("""
   standard SSH configurations
   """)
 
-parser.add_argument(
-    'filelist',
-    nargs='+',
-    type=str,
-    help='List of file to change (passed over by deploy reloaded')
+parser.add_argument('filelist',
+                    nargs='+',
+                    type=str,
+                    help="""
+                    List of file to change (passed over by deploy reloaded""")
 parser.add_argument("--kerberos",
                     type=str,
                     default='',
                     help='kerberos cache file to use')
-parser.add_argument(
-    '--localbase',
-    type=str,
-    required=True,
-    help="Working path of the plugin (from deploys inbuilt variables)")
-
+parser.add_argument('--localbase',
+                    type=str,
+                    required=True,
+                    help="""
+                    Working path of the plugin (from deploys inbuilt
+                    variables)""")
 parser.add_argument("--remotehost",
                     type=str,
                     required=True,
                     help='Remote host (can use configuration in ~/.ssh/config')
-
 parser.add_argument("--remotebase",
                     type=str,
                     required=True,
@@ -43,17 +42,21 @@ for file in args.filelist:
   relpath = file.replace(args.localbase, '')
   reldir = os.path.dirname(relpath)
 
-  print( file, relpath, args.localbase, )
+  print('Local file:', file, relpath, args.localbase)
+  print('Remote settings:', args.remotehost, args.remotebase)
 
   if args.deploy:
-    subprocess.call([
+    try:
+      subprocess.call([
         'ssh', args.remotehost, 'mkdir', '-p', '{}/{}'.format(
-            args.remotebase, reldir)
-    ],
-                    env={'KRB5CCNAME': args.kerberos})
-    subprocess.call([
+          args.remotebase, reldir)
+      ],
+                      env={'KRB5CCNAME': args.kerberos})
+      subprocess.call([
         'scp', file, '{}:{}/{}'.format(args.remotehost, args.remotebase, relpath)
-    ],
-                    env={'KRB5CCNAME': args.kerberos})
+      ],
+                      env={'KRB5CCNAME': args.kerberos})
+    except Exception as e:
+      print("Error raised running scp command:", e)
 
-# input('Press Enter to continue')
+  #input('Press Enter to continue')

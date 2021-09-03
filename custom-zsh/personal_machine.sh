@@ -8,12 +8,14 @@
 # Machine specific variables
 export ROOTSYS=/usr
 export PATH=$PATH:$ROOTSYS/bin
-export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
+export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 export PATH=$PATH:/opt/resolve/bin
 export PYTHONPATH=$PYTHONPATH:$HOME/.pylib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
 export TDR_DIR=$HOME/HomeWork/CMS-Group/TDRMaster
 export XDG_CONFIG_HOME=/home/ensc/.config # KDE command line themeing
+export MOZ_X11_EGL=1         # Firefox hardware accelleration 
+# export MOZ_ENABLE_WAYLAND=1  # Firefox hardware acceleration
 
 # Importing common functions
 source $HOME/.custom-zsh/tdr_settings.sh
@@ -82,12 +84,18 @@ ntunode() {
   printf "ntunode%02d" $((random % 20 + 1))
 }
 
+lport_(){
+	port=$1 
+	str="-L localhost:${port}:localhost:${port}"
+	printf "%s" ${str} 
+}
+
 ntugridvpn() {
   sshuttle --dns -r yichen@ntugrid5 0/0 --exclude=140.112.104.121
 }
 
 umdcmsvpn() {
-  sshuttle --dns -r umdcms 0/0 --exclude=128.8.216.5 --exclude=128.8.216.193
+  sshuttle --dns -r umdcms-bash 0/0 --exclude=128.8.216.5 --exclude=128.8.216.193
 }
 
 lxplus() {
@@ -123,12 +131,12 @@ openremote() {
   $program /tmp/$(basename $remotefile)
 }
 
-alias pdfremote='openremote zathura'
+alias pdfremote='openremote okular'
 alias displayremote='openremote display'
 alias rootremote='openremote root'
 
 rankpac() {
-  curl --silent "https://www.archlinux.org/mirrorlist/all/https/" | \
+  curl --silent "https://archlinux.org/mirrorlist/?country=all&protocol=https&ip_version=4" | \
   sed --expression='s/^#Server/Server/' --expression='/^#/d'      | \
   rankmirrors -n 10 --verbose -
 }

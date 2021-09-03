@@ -8,7 +8,7 @@
 alias crab-setup='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias htop='htop --user ${USER}'
 alias usecms='source /cvmfs/cms.cern.ch/cmsset_default.sh'
-alias init-voms='voms-proxy-init -voms cms --valid 168:00'
+alias init-voms='voms-proxy-init -voms cms --valid 192:00 --out ${HOME}/x509up_u${UID}'
 
 export CPATH=$CPATH:/$HOME/local/include/:$HOME/local/include/ImageMagick-7/
 export LIBRARY_PATH=$LIBRARY_PATH:$HOME/local/lib/:$HOME/local/lib64/
