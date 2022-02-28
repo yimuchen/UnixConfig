@@ -14,23 +14,26 @@
       \node (rightedge) at (\the\paperwidth,0) {};
       \useasboundingbox[fill=primary](0,0.04) rectangle ($(rightedge)+(0,1.4)$);
       \node[anchor=east] at ($(rightedge)+(0,0.7)$){\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/CMS}};%
-      \node[anchor=east] at ($(rightedge)+(-1.05,0.7)$){\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/UMD}};
+      %\node[anchor=east] at ($(rightedge)+(-1.05,0.7)$){\includegraphics[height=0.9cm]{/home/ensc/texmf/tex/latex/img/UMD}};
       \node[anchor=west,white,font=\bfseries\Large] at (1,0.7){\inserttitle};
    \end{tikzpicture}
 
    \end{beamercolorbox}
 
    \vskip0.75cm%
-   \begin{beamercolorbox}[wd=\the\paperwidth,rightskip=-1.0cm,#1]{titleinstitute}
-      \flushright \insertinstitute\hspace{1cm}
+   \begin{beamercolorbox}[wd=0.90\paperwidth,#1]{titleauthor}
+      \flushright \insertauthor
+      %\hspace{1cm}
    \end{beamercolorbox}
-   \vskip-0.3cm
-   \begin{beamercolorbox}[wd=\the\paperwidth,rightskip=1.0cm,#1]{titleauthor}
-      \flushright \insertauthor\hspace{1cm}
+   \vskip-0.0cm
+   \begin{beamercolorbox}[wd=0.90\paperwidth,#1]{titleinstitute}
+      \flushright \insertinstitute
+      %\hspace{1cm}
    \end{beamercolorbox}
-   \vskip-0.3cm
-   \begin{beamercolorbox}[wd=\the\paperwidth,rightskip=1.0cm,#1]{titledate}
-      \flushright \insertdate\hspace{1cm}
+   \vskip-0.0cm
+   \begin{beamercolorbox}[wd=0.9\paperwidth,#1]{titledate}
+      \flushright \insertdate
+      %\hspace{1cm}
    \end{beamercolorbox}
    \vfill
 }

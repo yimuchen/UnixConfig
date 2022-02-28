@@ -6,7 +6,7 @@
 %% Loading additional libraries
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
-\usepackage{circuitikz}
+\usepackage[american]{circuitikz}
 \usepackage{fontspec}
 \usepackage{unicode-math}
 \usepackage{amsmath}
