@@ -4,31 +4,31 @@
 
 priority -50
 
-extends tex 
+extends tex
 
 snippet frame "Short hand for frame" b
 \begin{frame}${1:[fragile]}
-	\frametitle{$2}
-	$0
+  \frametitle{$2}
+  $0
 \end{frame}
 endsnippet
 
 snippet \singleColFrame "Single column frame short hand" b
 \singleColFrame{${1:Frame title}}{
-	${0:Frame content}
+  ${0:Frame content}
 }
 endsnippet
 
 snippet \doubleColFrame "Double column frame short hand" b
 \doubleColFrame{${1:Frame title}}{
-	${2:Left column}
+  ${2:Left column}
 }{
-	${3:Right column}
+  ${3:Right column}
 }
 endsnippet
 
 snippet \makeList "Quick & clean list making" b
 \makeList{${1:List Title}}{
-	\item ${0:Begin items to list}
+  \item ${0:Begin items to list}
 }
 endsnippet
