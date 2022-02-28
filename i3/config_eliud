@@ -143,7 +143,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -181,18 +181,18 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-	colors {
-	background $transparent
-	background #2B2C2B
+  colors {
+  background $transparent
+  background #2B2C2B
     statusline #F9FAF9
-   	separator  #454947
+     separator  #454947
 
-   	#                                  border  backgr. text
-	focused_workspace  #F9FAF9 #16A085 #2B2C2B
-	active_workspace   #595B5B #353836 #FDF6E3
-	inactive_workspace #595B5B #353836 #EEE8D5
-	urgent_workspace   #16A085 #FDF6E3 #E5201D
-	}
+     #                                  border  backgr. text
+  focused_workspace  #F9FAF9 #16A085 #2B2C2B
+  active_workspace   #595B5B #353836 #FDF6E3
+  inactive_workspace #595B5B #353836 #EEE8D5
+  urgent_workspace   #16A085 #FDF6E3 #E5201D
+  }
 
 }
 
