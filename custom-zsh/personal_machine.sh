@@ -85,9 +85,15 @@ ntunode() {
 }
 
 lport_(){
+<<<<<<< HEAD
   port=$1
   str="-L localhost:${port}:localhost:${port}"
   printf "%s" ${str}
+=======
+	port=$1
+	str="-L localhost:${port}:localhost:${port}"
+	printf "%s" ${str}
+>>>>>>> f9de402
 }
 
 ntugridvpn() {

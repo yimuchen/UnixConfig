@@ -9,8 +9,8 @@ import errno
 from pykeepass import PyKeePass
 
 parser = argparse.ArgumentParser(
-  """Starting kerberos tickets using credentials stored in a keepass database""",
-  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    'Starting kerbose tickets using credentials stored in keepass database',
+    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 parser.add_argument(
   '--database',
@@ -19,18 +19,17 @@ parser.add_argument(
   default='{}/ArchConfig/AppConfig/Database.kdbx'.format(os.getenv('HOME')),
   help='Keepass database file that we are going to search for entries')
 parser.add_argument(
-  '--sites',
-  '-s',
-  type=str,
-  nargs='+',
-  default=['FNAL', 'CERN'],
-  help='Entries in keepass database to use for kerberos identity generation')
+    '--sites',
+    '-s',
+    type=str,
+    nargs='+',
+    default=['FNAL', 'CERN'],
+    help='Entries in keepass database to use for kerberos identity')
 parser.add_argument(
-  '--default',
-  type=str,
-  default='FNAL',
-  help="""Which kerberos identity to link to as the "default" kerberos cache at
-  '/tmp/krb5cc_<USER_ID>'""")
+    '--default',
+    type=str,
+    default='FNAL',
+    help='Which kerberos identity to link to default kerberos cache')
 
 argcomplete.autocomplete(parser)
 args = parser.parse_args()
