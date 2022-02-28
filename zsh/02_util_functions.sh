@@ -49,7 +49,7 @@ function check_dir() {
 }
 
 function listpath() {
-   for file in $@ ; do
+   for file in $@; do
       echo $HOST:$(readlink -f $file)
    done
 }
@@ -66,4 +66,17 @@ function convert_pdf() {
       -quality 100 \
       -sharpen 0x1.0 \
       $output_file
+}
+
+function get_jupyter_url() {
+   # Getting the url of the of the jupyter server session that is running in this
+   # directory
+   local json_file=$(ls -1t ${PWD}/.local/share/jupyter/runtime/nbserver-*.json | head -n 1)
+   local token=$(cat ${json_file} | grep 'token' | awk '{print $2}')
+   local url=$(cat ${json_file} | grep 'http' | awk '{print $2}')
+   token=${token//\"/}
+   token=${token//,/}
+   url=${url//\"/}
+   url=${url//,/}
+   echo "${url}?token=${token}"
 }
