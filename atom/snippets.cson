@@ -172,7 +172,7 @@
       'prefix':'figure'
       'body':"""
       <figure>
-      	<img src="http://gdriv.es/ensc_github/${1:File in google Doc}"/>
+        <img src="http://gdriv.es/ensc_github/${1:File in google Doc}"/>
          <figcaption>${2:caption under }</figcaption>
       </figure>
       """
