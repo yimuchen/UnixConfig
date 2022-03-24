@@ -30,10 +30,6 @@ parser.add_argument('filelist',
                     type=str,
                     help="""List of file to push over (passed over by deploy
                     reloaded)""")
-parser.add_argument("--kerberos",
-                    type=str,
-                    default='',
-                    help='kerberos cache file to use')
 parser.add_argument('--localbase',
                     type=str,
                     required=True,
@@ -66,17 +62,14 @@ for file in args.filelist:
 
   if args.deploy:
     try:
-      subprocess.call([
-        'ssh', args.remotehost, 'mkdir', '-p', '{}/{}'.format(
-          args.remotebase, reldir)
-      ],
-                      env={'KRB5CCNAME': args.kerberos})
+      subprocess.call(
+        ['ssh', args.remotehost, 'mkdir', '-p', f'{args.remotebase}/{reldir}'],
+        env={'KRB5CCNAME': 'DIR:/tmp/krb5cc'})
 
-      subprocess.call([
-        'scp', file, '{}:{}/{}'.format(args.remotehost, args.remotebase, relpath)
-      ],
-                      env={'KRB5CCNAME': args.kerberos})
+      subprocess.call(
+        ['scp', file, f'{args.remotehost}:{args.remotebase}/{relpath}'],
+        env={'KRB5CCNAME': 'DIR:/tmp/krb5cc'})
     except Exception as e:
       print("Error raised running scp command:", e)
 
-  # input('Press Enter to continue')
+  #input('Press Enter to continue')
