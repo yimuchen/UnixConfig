@@ -17,6 +17,9 @@ export XDG_CONFIG_HOME=/home/ensc/.config # KDE command line themeing
 export MOZ_X11_EGL=1         # Firefox hardware accelleration
 # export MOZ_ENABLE_WAYLAND=1  # Firefox hardware acceleration
 
+# Kerberose for multiple credential settings 
+export KRB5CCNAME=DIR:/tmp/krb5cc
+
 # Importing common functions
 source $HOME/.custom-zsh/tdr_settings.sh
 
@@ -85,15 +88,9 @@ ntunode() {
 }
 
 lport_(){
-<<<<<<< HEAD
   port=$1
   str="-L localhost:${port}:localhost:${port}"
   printf "%s" ${str}
-=======
-	port=$1
-	str="-L localhost:${port}:localhost:${port}"
-	printf "%s" ${str}
->>>>>>> f9de402
 }
 
 ntugridvpn() {
