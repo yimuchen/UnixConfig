@@ -80,3 +80,14 @@ function get_jupyter_url() {
    url=${url//,/}
    echo "${url}?token=${token}"
 }
+
+function cert_gen_cmd() {
+   ## Printing the command to generate certificate generation on screen
+   if [ "$#" -eq 1 ]; then
+      echo "openssl pkcs12 -in ${1} -clcerts -nokeys -out $HOME/.globus/usercert.pem"
+      echo "openssl pkcs12 -in ${1} -nocerts -out $HOME/.globus/userkey.pem"
+   else
+      echo "openssl pkcs12 -in <MyCert.p12> -clcerts -nokeys -out $HOME/.globus/usercert.pem"
+      echo "openssl pkcs12 -in <MyCert.p12> -nocerts -out $HOME/.globus/userkey.pem"
+   fi
+}
