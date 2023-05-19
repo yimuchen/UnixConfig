@@ -14,14 +14,15 @@ export PYTHONPATH=$PYTHONPATH:$HOME/.pylib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOTSYS/lib
 export TDR_DIR=$HOME/HomeWork/CMS-Group/TDRMaster
 export XDG_CONFIG_HOME=/home/ensc/.config # KDE command line themeing
-export MOZ_X11_EGL=1         # Firefox hardware accelleration
-# export MOZ_ENABLE_WAYLAND=1  # Firefox hardware acceleration
+export MOZ_X11_EGL=1                      # Firefox hardware accelleration
+export MOZ_ENABLE_WAYLAND=1               # Firefox hardware acceleration
 
-# Kerberose for multiple credential settings 
+# LIBVA
+export LIBVA_DRIVERS_PATH=/usr/lib/dri/
+export LIBVA_DRIVER_NAME=vdpau
+
+# Kerberose for multiple credential settings
 export KRB5CCNAME=DIR:/tmp/krb5cc
-
-# Importing common functions
-source $HOME/.custom-zsh/tdr_settings.sh
 
 # Machine specific alias
 alias gphoto2='gphoto2 --port usb:'
@@ -54,6 +55,10 @@ winreboot() {
   sudo reboot
 }
 
+efireboot() {
+  systemctl reboot --firmware-setup
+}
+
 #-------------------------------------------------------------------------------
 #   Slow restart of Networkmanager
 #-------------------------------------------------------------------------------
@@ -75,8 +80,8 @@ netrestart() {
 #   Conky restart
 #-------------------------------------------------------------------------------
 conkrestart() {
-  pkill conky 2> /dev/null
-  conky -c ~/.Conky_config/conkyrc.lua 2> /dev/null
+  pkill conky 2>/dev/null
+  conky -c ~/.Conky_config/conkyrc.lua 2>/dev/null
 }
 
 #-------------------------------------------------------------------------------
@@ -87,7 +92,8 @@ ntunode() {
   printf "ntunode%02d" $((random % 20 + 1))
 }
 
-lport_(){
+lf_() {
+  ## Short hand for generating local forwarding string for SSH commands
   port=$1
   str="-L localhost:${port}:localhost:${port}"
   printf "%s" ${str}
@@ -108,7 +114,7 @@ lxplus() {
   while [ -z $ip ]; do
     random=$(od -An -N1 -i </dev/urandom)
     machine=$(printf "lxplus7%02d.cern.ch" $((random % 100 + 1)))
-    if nc -vzw 1 ${machine} 22 2> /dev/null ; then
+    if nc -vzw 1 ${machine} 22 2>/dev/null; then
       break
     fi
   done
@@ -140,13 +146,24 @@ alias rootremote='openremote root'
 alias catremote='openremote cat'
 
 rankpac() {
-  curl --silent "https://archlinux.org/mirrorlist/?country=all&protocol=https&ip_version=4" | \
-  sed --expression='s/^#Server/Server/' --expression='/^#/d'      | \
-  rankmirrors -n 10 --verbose -
+  {
+    curl --silent "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4" &
+    curl --silent "https://archlinux.org/mirrorlist/?country=TW&protocol=https&ip_version=4" &
+    curl --silent "https://archlinux.org/mirrorlist/?country=CH&protocol=https&ip_version=4" &
+    curl --silent "https://archlinux.org/mirrorlist/?country=DE&protocol=https&ip_version=4" &
+    curl --silent "https://archlinux.org/mirrorlist/?country=FR&protocol=https&ip_version=4"
+  } |
+    sed --expression='s/^#Server/Server/' --expression='/^#/d' |
+    rankmirrors -n 10 --verbose -
 }
 
 function set_kerberos() {
   export KRB5CCNAME=/tmp/kerberos_${UID}_${1}
+}
+
+function update_clock() {
+  sudo ntpd -qg
+  sudo hwclock -w
 }
 
 #-------------------------------------------------------------------------------
@@ -179,7 +196,6 @@ export G4TMP=/tmp/
 export G4TMPDIR=/tmp/
 export G4TMPDIR=/tmp/
 
-
 #-------------------------------------------------------------------------------
 #   Starting local cvmfs session in docker
 #   Reference: https://github.com/aperloff/cms-cvmfs-docker
@@ -197,3 +213,24 @@ alias run_cvmfs='
                    --volume "$HOME/Homework/CMSSW:/home/cmsuser/UserCode" \
                    aperloff/cms-cvmfs-docker:latest
 '
+
+#-------------------------------------------------------------------------------
+#   Virtual machine manager network startup
+#-------------------------------------------------------------------------------
+alias virt_network_start='sudo virsh net-start default'
+
+#-------------------------------------------------------------------------------
+#   Docker helper function
+#-------------------------------------------------------------------------------
+docker_clear_container() {
+  docker container rm $(docker container ls --all | tail -n +2 | awk '{print $1}')
+}
+
+docker_clear_image() {
+  docker image rm $(docker image ls --all | tail -n +2 | awk '{print $3}')
+}
+
+docker_clear_all() {
+  docker_clear_container
+  docker_clear_image
+}
