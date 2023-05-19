@@ -34,19 +34,28 @@ def make_file_list(redir):
     file_list = {x[-1]: x[4] for x in file_list if len(x) > 5}
     return file_list
   except subprocess.CalledProcessError as err:
-    print("Error calling command: ", err)
-    return {}
+    if 'Login incorrect' in str(err):
+      print('Login error, trying again')
+      return make_file_list(redir)
+    else:
+      print("Error calling command: ", err)
+      return {}
 
 
 source_list = make_file_list(args.source)
 dest_list = make_file_list(args.destination)
 
-print(args.run)
+matched = True
+
 for file in source_list.keys():
   cmd = []
   if file not in dest_list:
-    cmd = ['gfal-copy', f'{args.source}/{file}', f'{args.destination}/{file}']
+    matched = False
+    cmd = [
+      'gfal-copy', '-f', f'{args.source}/{file}', f'{args.destination}/{file}'
+    ]
   elif dest_list[file] != source_list[file]:
+    matched = False
     cmd = [
       'gfal-copy', '-f', f'{args.source}/{file}', f'{args.destination}/{file}'
     ]
@@ -58,3 +67,6 @@ for file in source_list.keys():
       print(' '.join(cmd))
     else:
       subprocess.run(cmd)
+
+if matched:
+  print('All files found and matched in destination')
