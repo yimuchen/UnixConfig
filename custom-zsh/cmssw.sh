@@ -9,6 +9,9 @@ alias crab-setup='source /cvmfs/cms.cern.ch/crab3/crab.sh'
 alias htop='htop --user ${USER}'
 alias usecms='source /cvmfs/cms.cern.ch/cmsset_default.sh'
 alias init-voms='voms-proxy-init -voms cms --valid 192:00 --out ${HOME}/x509up_u${UID}'
+alias wget='wget --no-check-certificate'
+
+unset SSH_ASKPASS
 
 export X509_USER_PROXY=${HOME}/x509up_u${UID}
 export CPATH=$CPATH:/$HOME/local/include/:$HOME/local/include/ImageMagick-7/
