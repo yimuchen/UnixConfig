@@ -71,7 +71,7 @@ function convert_pdf() {
 function get_jupyter_url() {
    # Getting the url of the of the jupyter server session that is running in this
    # directory
-   local json_file=$(ls -1t ${PWD}/.local/share/jupyter/runtime/nbserver-*.json | head -n 1)
+   local json_file=$(ls -1t ${PWD}/.local/share/jupyter/runtime/jpserver-*.json | head -n 1)
    local token=$(cat ${json_file} | grep 'token' | awk '{print $2}')
    local url=$(cat ${json_file} | grep 'http' | awk '{print $2}')
    token=${token//\"/}
@@ -84,10 +84,12 @@ function get_jupyter_url() {
 function cert_gen_cmd() {
    ## Printing the command to generate certificate generation on screen
    if [ "$#" -eq 1 ]; then
-      echo "openssl pkcs12 -in ${1} -clcerts -nokeys -out $HOME/.globus/usercert.pem"
-      echo "openssl pkcs12 -in ${1} -nocerts -out $HOME/.globus/userkey.pem"
+      echo "openssl pkcs12 -in ${1} -clcerts -nokeys -out \$HOME/.globus/usercert.pem"
+      echo "openssl pkcs12 -in ${1} -nocerts -out \$HOME/.globus/userkey.pem"
    else
-      echo "openssl pkcs12 -in <MyCert.p12> -clcerts -nokeys -out $HOME/.globus/usercert.pem"
-      echo "openssl pkcs12 -in <MyCert.p12> -nocerts -out $HOME/.globus/userkey.pem"
+      echo "You can get your certificate at: https://ca.cern.ch/ca/user/Request.aspx?template=EE2User"
+      echo "Below ar the commands using the certificate:"
+      echo ">> openssl pkcs12 -in <MyCert.p12> -clcerts -nokeys -out \$HOME/.globus/usercert.pem"
+      echo ">> openssl pkcs12 -in <MyCert.p12> -nocerts -out \$HOME/.globus/userkey.pem"
    fi
 }
