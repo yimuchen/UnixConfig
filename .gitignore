@@ -22,5 +22,8 @@ log*
 /pylib/__pycache__/*
 /.vscode/**
 
+# Ignore contents of the custom-zsh by default
+custom-zsh/*
 # Specific file inclusion
-# ![relative/path/to/file]
+!custom-zsh/personal_machine.sh
+!custom-zsh/cmssw.sh
