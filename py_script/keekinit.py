@@ -17,7 +17,7 @@ parser.add_argument('--sites',
                     '-s',
                     type=str,
                     nargs='+',
-                    default=['FNAL.GOV', 'CERN.CH'],
+                    default=['CERN.CH', 'FNAL.GOV'],
                     help="""URL to look for in keepassXC database to use for
                     kerberos identity. The URL in the database should be
                     prefixed with the 'kerberos://' prefix.""")
